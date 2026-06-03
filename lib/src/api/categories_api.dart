@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
-import 'package:etkinlik_io_api/src/model/authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
 import 'package:etkinlik_io_api/src/model/category.dart';
 
 class CategoriesApi {

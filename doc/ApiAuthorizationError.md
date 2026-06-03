@@ -1,4 +1,4 @@
-# etkinlik_io_api.model.DeletedError
+# etkinlik_io_api.model.ApiAuthorizationError
 
 ## Load the model package
 ```dart

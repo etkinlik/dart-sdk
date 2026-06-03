@@ -1,12 +1,12 @@
 import 'package:test/test.dart';
 import 'package:etkinlik_io_api/etkinlik_io_api.dart';
 
-// tests for DuplicateRecordError
+// tests for ApiDuplicateRecordError
 void main() {
-  final instance = DuplicateRecordErrorBuilder();
+  final instance = ApiDuplicateRecordErrorBuilder();
   // TODO add properties to the builder and call build()
 
-  group(DuplicateRecordError, () {
+  group(ApiDuplicateRecordError, () {
     // bool success
     test('to test the property `success`', () async {
       // TODO

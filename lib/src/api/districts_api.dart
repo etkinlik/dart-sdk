@@ -10,10 +10,10 @@ import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_general_error.dart';
+import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/district.dart';
-import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/not_found_error.dart';
 
 class DistrictsApi {
 

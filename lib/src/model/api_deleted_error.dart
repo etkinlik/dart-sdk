@@ -6,15 +6,15 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'general_error.g.dart';
+part 'api_deleted_error.g.dart';
 
-/// GeneralError
+/// ApiDeletedError
 ///
 /// Properties:
 /// * [success] 
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class GeneralError implements Built<GeneralError, GeneralErrorBuilder> {
+abstract class ApiDeletedError implements Built<ApiDeletedError, ApiDeletedErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -22,27 +22,27 @@ abstract class GeneralError implements Built<GeneralError, GeneralErrorBuilder> 
   @BuiltValueField(wireName: r'message')
   String? get message;
 
-  GeneralError._();
+  ApiDeletedError._();
 
-  factory GeneralError([void updates(GeneralErrorBuilder b)]) = _$GeneralError;
+  factory ApiDeletedError([void updates(ApiDeletedErrorBuilder b)]) = _$ApiDeletedError;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(GeneralErrorBuilder b) => b;
+  static void _defaults(ApiDeletedErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GeneralError> get serializer => _$GeneralErrorSerializer();
+  static Serializer<ApiDeletedError> get serializer => _$ApiDeletedErrorSerializer();
 }
 
-class _$GeneralErrorSerializer implements PrimitiveSerializer<GeneralError> {
+class _$ApiDeletedErrorSerializer implements PrimitiveSerializer<ApiDeletedError> {
   @override
-  final Iterable<Type> types = const [GeneralError, _$GeneralError];
+  final Iterable<Type> types = const [ApiDeletedError, _$ApiDeletedError];
 
   @override
-  final String wireName = r'GeneralError';
+  final String wireName = r'ApiDeletedError';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    GeneralError object, {
+    ApiDeletedError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.success != null) {
@@ -64,7 +64,7 @@ class _$GeneralErrorSerializer implements PrimitiveSerializer<GeneralError> {
   @override
   Object serialize(
     Serializers serializers,
-    GeneralError object, {
+    ApiDeletedError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -75,7 +75,7 @@ class _$GeneralErrorSerializer implements PrimitiveSerializer<GeneralError> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required GeneralErrorBuilder result,
+    required ApiDeletedErrorBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -105,12 +105,12 @@ class _$GeneralErrorSerializer implements PrimitiveSerializer<GeneralError> {
   }
 
   @override
-  GeneralError deserialize(
+  ApiDeletedError deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = GeneralErrorBuilder();
+    final result = ApiDeletedErrorBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -14,20 +14,20 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:etkinlik_io_api/src/date_serializer.dart';
 import 'package:etkinlik_io_api/src/model/date.dart';
 
-import 'package:etkinlik_io_api/src/model/authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_deleted_error.dart';
+import 'package:etkinlik_io_api/src/model/api_duplicate_record_error.dart';
+import 'package:etkinlik_io_api/src/model/api_general_error.dart';
+import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/category.dart';
 import 'package:etkinlik_io_api/src/model/city.dart';
-import 'package:etkinlik_io_api/src/model/deleted_error.dart';
 import 'package:etkinlik_io_api/src/model/district.dart';
-import 'package:etkinlik_io_api/src/model/duplicate_record_error.dart';
 import 'package:etkinlik_io_api/src/model/event.dart';
-import 'package:etkinlik_io_api/src/model/event_impression_record_ok.dart';
+import 'package:etkinlik_io_api/src/model/event_impression_created.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_request.dart';
 import 'package:etkinlik_io_api/src/model/event_venue_data.dart';
 import 'package:etkinlik_io_api/src/model/format.dart';
-import 'package:etkinlik_io_api/src/model/general_error.dart';
 import 'package:etkinlik_io_api/src/model/neighborhood.dart';
-import 'package:etkinlik_io_api/src/model/not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/paginated_events.dart';
 import 'package:etkinlik_io_api/src/model/paginated_venues.dart';
 import 'package:etkinlik_io_api/src/model/pagination_meta.dart';
@@ -38,20 +38,20 @@ import 'package:etkinlik_io_api/src/model/venue_manual.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
-  AuthorizationError,
+  ApiAuthorizationError,
+  ApiDeletedError,
+  ApiDuplicateRecordError,
+  ApiGeneralError,
+  ApiNotFoundError,
   Category,
   City,
-  DeletedError,
   District,
-  DuplicateRecordError,
   Event,
-  EventImpressionRecordOk,
+  EventImpressionCreated,
   EventImpressionRequest,
   EventVenueData,
   Format,
-  GeneralError,
   Neighborhood,
-  NotFoundError,
   PaginatedEvents,
   PaginatedVenues,
   PaginationMeta,

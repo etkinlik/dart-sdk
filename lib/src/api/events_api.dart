@@ -9,14 +9,14 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/authorization_error.dart';
-import 'package:etkinlik_io_api/src/model/deleted_error.dart';
-import 'package:etkinlik_io_api/src/model/duplicate_record_error.dart';
+import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_deleted_error.dart';
+import 'package:etkinlik_io_api/src/model/api_duplicate_record_error.dart';
+import 'package:etkinlik_io_api/src/model/api_general_error.dart';
+import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/event.dart';
-import 'package:etkinlik_io_api/src/model/event_impression_record_ok.dart';
+import 'package:etkinlik_io_api/src/model/event_impression_created.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_request.dart';
-import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/paginated_events.dart';
 
 class EventsApi {
@@ -233,9 +233,9 @@ class EventsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [EventImpressionRecordOk] as data
+  /// Returns a [Future] containing a [Response] with a [EventImpressionCreated] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EventImpressionRecordOk>> recordEventImpression({ 
+  Future<Response<EventImpressionCreated>> recordEventImpression({ 
     required int id,
     EventImpressionRequest? eventImpressionRequest,
     CancelToken? cancelToken,
@@ -293,14 +293,14 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    EventImpressionRecordOk? _responseData;
+    EventImpressionCreated? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(EventImpressionRecordOk),
-      ) as EventImpressionRecordOk;
+        specifiedType: const FullType(EventImpressionCreated),
+      ) as EventImpressionCreated;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -312,7 +312,7 @@ class EventsApi {
       );
     }
 
-    return Response<EventImpressionRecordOk>(
+    return Response<EventImpressionCreated>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

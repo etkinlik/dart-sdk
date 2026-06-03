@@ -6,39 +6,43 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'event_impression_record_ok.g.dart';
+part 'api_general_error.g.dart';
 
-/// EventImpressionRecordOk
+/// ApiGeneralError
 ///
 /// Properties:
-/// * [success] - true when the operation succeeded.
+/// * [success] 
+/// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class EventImpressionRecordOk implements Built<EventImpressionRecordOk, EventImpressionRecordOkBuilder> {
-  /// true when the operation succeeded.
+abstract class ApiGeneralError implements Built<ApiGeneralError, ApiGeneralErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
-  EventImpressionRecordOk._();
+  /// Error message (Turkish in API responses).
+  @BuiltValueField(wireName: r'message')
+  String? get message;
 
-  factory EventImpressionRecordOk([void updates(EventImpressionRecordOkBuilder b)]) = _$EventImpressionRecordOk;
+  ApiGeneralError._();
+
+  factory ApiGeneralError([void updates(ApiGeneralErrorBuilder b)]) = _$ApiGeneralError;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(EventImpressionRecordOkBuilder b) => b;
+  static void _defaults(ApiGeneralErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EventImpressionRecordOk> get serializer => _$EventImpressionRecordOkSerializer();
+  static Serializer<ApiGeneralError> get serializer => _$ApiGeneralErrorSerializer();
 }
 
-class _$EventImpressionRecordOkSerializer implements PrimitiveSerializer<EventImpressionRecordOk> {
+class _$ApiGeneralErrorSerializer implements PrimitiveSerializer<ApiGeneralError> {
   @override
-  final Iterable<Type> types = const [EventImpressionRecordOk, _$EventImpressionRecordOk];
+  final Iterable<Type> types = const [ApiGeneralError, _$ApiGeneralError];
 
   @override
-  final String wireName = r'EventImpressionRecordOk';
+  final String wireName = r'ApiGeneralError';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    EventImpressionRecordOk object, {
+    ApiGeneralError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.success != null) {
@@ -48,12 +52,19 @@ class _$EventImpressionRecordOkSerializer implements PrimitiveSerializer<EventIm
         specifiedType: const FullType(bool),
       );
     }
+    if (object.message != null) {
+      yield r'message';
+      yield serializers.serialize(
+        object.message,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    EventImpressionRecordOk object, {
+    ApiGeneralError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -64,7 +75,7 @@ class _$EventImpressionRecordOkSerializer implements PrimitiveSerializer<EventIm
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required EventImpressionRecordOkBuilder result,
+    required ApiGeneralErrorBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -78,6 +89,13 @@ class _$EventImpressionRecordOkSerializer implements PrimitiveSerializer<EventIm
           ) as bool;
           result.success = valueDes;
           break;
+        case r'message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.message = valueDes;
+          break;
         default:
           unhandled.add(key);
           unhandled.add(value);
@@ -87,12 +105,12 @@ class _$EventImpressionRecordOkSerializer implements PrimitiveSerializer<EventIm
   }
 
   @override
-  EventImpressionRecordOk deserialize(
+  ApiGeneralError deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = EventImpressionRecordOkBuilder();
+    final result = ApiGeneralErrorBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

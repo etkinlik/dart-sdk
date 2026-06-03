@@ -6,9 +6,9 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'duplicate_record_error.g.dart';
+part 'api_duplicate_record_error.g.dart';
 
-/// DuplicateRecordError
+/// ApiDuplicateRecordError
 ///
 /// Properties:
 /// * [success] 
@@ -17,7 +17,7 @@ part 'duplicate_record_error.g.dart';
 /// * [newName] - Name of the canonical record.
 /// * [newSlug] - Slug of the canonical record.
 @BuiltValue()
-abstract class DuplicateRecordError implements Built<DuplicateRecordError, DuplicateRecordErrorBuilder> {
+abstract class ApiDuplicateRecordError implements Built<ApiDuplicateRecordError, ApiDuplicateRecordErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -37,27 +37,27 @@ abstract class DuplicateRecordError implements Built<DuplicateRecordError, Dupli
   @BuiltValueField(wireName: r'new_slug')
   String? get newSlug;
 
-  DuplicateRecordError._();
+  ApiDuplicateRecordError._();
 
-  factory DuplicateRecordError([void updates(DuplicateRecordErrorBuilder b)]) = _$DuplicateRecordError;
+  factory ApiDuplicateRecordError([void updates(ApiDuplicateRecordErrorBuilder b)]) = _$ApiDuplicateRecordError;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(DuplicateRecordErrorBuilder b) => b;
+  static void _defaults(ApiDuplicateRecordErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DuplicateRecordError> get serializer => _$DuplicateRecordErrorSerializer();
+  static Serializer<ApiDuplicateRecordError> get serializer => _$ApiDuplicateRecordErrorSerializer();
 }
 
-class _$DuplicateRecordErrorSerializer implements PrimitiveSerializer<DuplicateRecordError> {
+class _$ApiDuplicateRecordErrorSerializer implements PrimitiveSerializer<ApiDuplicateRecordError> {
   @override
-  final Iterable<Type> types = const [DuplicateRecordError, _$DuplicateRecordError];
+  final Iterable<Type> types = const [ApiDuplicateRecordError, _$ApiDuplicateRecordError];
 
   @override
-  final String wireName = r'DuplicateRecordError';
+  final String wireName = r'ApiDuplicateRecordError';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    DuplicateRecordError object, {
+    ApiDuplicateRecordError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.success != null) {
@@ -100,7 +100,7 @@ class _$DuplicateRecordErrorSerializer implements PrimitiveSerializer<DuplicateR
   @override
   Object serialize(
     Serializers serializers,
-    DuplicateRecordError object, {
+    ApiDuplicateRecordError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -111,7 +111,7 @@ class _$DuplicateRecordErrorSerializer implements PrimitiveSerializer<DuplicateR
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required DuplicateRecordErrorBuilder result,
+    required ApiDuplicateRecordErrorBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -162,12 +162,12 @@ class _$DuplicateRecordErrorSerializer implements PrimitiveSerializer<DuplicateR
   }
 
   @override
-  DuplicateRecordError deserialize(
+  ApiDuplicateRecordError deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = DuplicateRecordErrorBuilder();
+    final result = ApiDuplicateRecordErrorBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

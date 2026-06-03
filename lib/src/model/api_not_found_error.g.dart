@@ -1,35 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'authorization_error.dart';
+part of 'api_not_found_error.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$AuthorizationError extends AuthorizationError {
+class _$ApiNotFoundError extends ApiNotFoundError {
   @override
   final bool? success;
   @override
   final String? message;
 
-  factory _$AuthorizationError(
-          [void Function(AuthorizationErrorBuilder)? updates]) =>
-      (AuthorizationErrorBuilder()..update(updates))._build();
+  factory _$ApiNotFoundError(
+          [void Function(ApiNotFoundErrorBuilder)? updates]) =>
+      (ApiNotFoundErrorBuilder()..update(updates))._build();
 
-  _$AuthorizationError._({this.success, this.message}) : super._();
+  _$ApiNotFoundError._({this.success, this.message}) : super._();
   @override
-  AuthorizationError rebuild(
-          void Function(AuthorizationErrorBuilder) updates) =>
+  ApiNotFoundError rebuild(void Function(ApiNotFoundErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AuthorizationErrorBuilder toBuilder() =>
-      AuthorizationErrorBuilder()..replace(this);
+  ApiNotFoundErrorBuilder toBuilder() =>
+      ApiNotFoundErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AuthorizationError &&
+    return other is ApiNotFoundError &&
         success == other.success &&
         message == other.message;
   }
@@ -45,16 +44,16 @@ class _$AuthorizationError extends AuthorizationError {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'AuthorizationError')
+    return (newBuiltValueToStringHelper(r'ApiNotFoundError')
           ..add('success', success)
           ..add('message', message))
         .toString();
   }
 }
 
-class AuthorizationErrorBuilder
-    implements Builder<AuthorizationError, AuthorizationErrorBuilder> {
-  _$AuthorizationError? _$v;
+class ApiNotFoundErrorBuilder
+    implements Builder<ApiNotFoundError, ApiNotFoundErrorBuilder> {
+  _$ApiNotFoundError? _$v;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -64,11 +63,11 @@ class AuthorizationErrorBuilder
   String? get message => _$this._message;
   set message(String? message) => _$this._message = message;
 
-  AuthorizationErrorBuilder() {
-    AuthorizationError._defaults(this);
+  ApiNotFoundErrorBuilder() {
+    ApiNotFoundError._defaults(this);
   }
 
-  AuthorizationErrorBuilder get _$this {
+  ApiNotFoundErrorBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _success = $v.success;
@@ -79,21 +78,21 @@ class AuthorizationErrorBuilder
   }
 
   @override
-  void replace(AuthorizationError other) {
-    _$v = other as _$AuthorizationError;
+  void replace(ApiNotFoundError other) {
+    _$v = other as _$ApiNotFoundError;
   }
 
   @override
-  void update(void Function(AuthorizationErrorBuilder)? updates) {
+  void update(void Function(ApiNotFoundErrorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  AuthorizationError build() => _build();
+  ApiNotFoundError build() => _build();
 
-  _$AuthorizationError _build() {
+  _$ApiNotFoundError _build() {
     final _$result = _$v ??
-        _$AuthorizationError._(
+        _$ApiNotFoundError._(
           success: success,
           message: message,
         );

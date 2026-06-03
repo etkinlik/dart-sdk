@@ -1,4 +1,4 @@
-# etkinlik_io_api.model.DuplicateRecordError
+# etkinlik_io_api.model.ApiDuplicateRecordError
 
 ## Load the model package
 ```dart

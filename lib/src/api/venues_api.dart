@@ -9,9 +9,9 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/authorization_error.dart';
-import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/not_found_error.dart';
+import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
+import 'package:etkinlik_io_api/src/model/api_general_error.dart';
+import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/paginated_venues.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
 

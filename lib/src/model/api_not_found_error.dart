@@ -6,15 +6,15 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'authorization_error.g.dart';
+part 'api_not_found_error.g.dart';
 
-/// AuthorizationError
+/// ApiNotFoundError
 ///
 /// Properties:
 /// * [success] 
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class AuthorizationError implements Built<AuthorizationError, AuthorizationErrorBuilder> {
+abstract class ApiNotFoundError implements Built<ApiNotFoundError, ApiNotFoundErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -22,27 +22,27 @@ abstract class AuthorizationError implements Built<AuthorizationError, Authoriza
   @BuiltValueField(wireName: r'message')
   String? get message;
 
-  AuthorizationError._();
+  ApiNotFoundError._();
 
-  factory AuthorizationError([void updates(AuthorizationErrorBuilder b)]) = _$AuthorizationError;
+  factory ApiNotFoundError([void updates(ApiNotFoundErrorBuilder b)]) = _$ApiNotFoundError;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AuthorizationErrorBuilder b) => b;
+  static void _defaults(ApiNotFoundErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AuthorizationError> get serializer => _$AuthorizationErrorSerializer();
+  static Serializer<ApiNotFoundError> get serializer => _$ApiNotFoundErrorSerializer();
 }
 
-class _$AuthorizationErrorSerializer implements PrimitiveSerializer<AuthorizationError> {
+class _$ApiNotFoundErrorSerializer implements PrimitiveSerializer<ApiNotFoundError> {
   @override
-  final Iterable<Type> types = const [AuthorizationError, _$AuthorizationError];
+  final Iterable<Type> types = const [ApiNotFoundError, _$ApiNotFoundError];
 
   @override
-  final String wireName = r'AuthorizationError';
+  final String wireName = r'ApiNotFoundError';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    AuthorizationError object, {
+    ApiNotFoundError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.success != null) {
@@ -64,7 +64,7 @@ class _$AuthorizationErrorSerializer implements PrimitiveSerializer<Authorizatio
   @override
   Object serialize(
     Serializers serializers,
-    AuthorizationError object, {
+    ApiNotFoundError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -75,7 +75,7 @@ class _$AuthorizationErrorSerializer implements PrimitiveSerializer<Authorizatio
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required AuthorizationErrorBuilder result,
+    required ApiNotFoundErrorBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -105,12 +105,12 @@ class _$AuthorizationErrorSerializer implements PrimitiveSerializer<Authorizatio
   }
 
   @override
-  AuthorizationError deserialize(
+  ApiNotFoundError deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = AuthorizationErrorBuilder();
+    final result = ApiNotFoundErrorBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

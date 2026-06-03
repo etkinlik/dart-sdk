@@ -23,7 +23,7 @@ void main() {
 
     // Record event impression
     //
-    //Future<EventImpressionRecordOk> recordEventImpression(int id, { EventImpressionRequest eventImpressionRequest }) async
+    //Future<EventImpressionCreated> recordEventImpression(int id, { EventImpressionRequest eventImpressionRequest }) async
     test('test recordEventImpression', () async {
       // TODO
     });

@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'duplicate_record_error.dart';
+part of 'api_duplicate_record_error.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$DuplicateRecordError extends DuplicateRecordError {
+class _$ApiDuplicateRecordError extends ApiDuplicateRecordError {
   @override
   final bool? success;
   @override
@@ -18,26 +18,26 @@ class _$DuplicateRecordError extends DuplicateRecordError {
   @override
   final String? newSlug;
 
-  factory _$DuplicateRecordError(
-          [void Function(DuplicateRecordErrorBuilder)? updates]) =>
-      (DuplicateRecordErrorBuilder()..update(updates))._build();
+  factory _$ApiDuplicateRecordError(
+          [void Function(ApiDuplicateRecordErrorBuilder)? updates]) =>
+      (ApiDuplicateRecordErrorBuilder()..update(updates))._build();
 
-  _$DuplicateRecordError._(
+  _$ApiDuplicateRecordError._(
       {this.success, this.message, this.newId, this.newName, this.newSlug})
       : super._();
   @override
-  DuplicateRecordError rebuild(
-          void Function(DuplicateRecordErrorBuilder) updates) =>
+  ApiDuplicateRecordError rebuild(
+          void Function(ApiDuplicateRecordErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DuplicateRecordErrorBuilder toBuilder() =>
-      DuplicateRecordErrorBuilder()..replace(this);
+  ApiDuplicateRecordErrorBuilder toBuilder() =>
+      ApiDuplicateRecordErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is DuplicateRecordError &&
+    return other is ApiDuplicateRecordError &&
         success == other.success &&
         message == other.message &&
         newId == other.newId &&
@@ -59,7 +59,7 @@ class _$DuplicateRecordError extends DuplicateRecordError {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'DuplicateRecordError')
+    return (newBuiltValueToStringHelper(r'ApiDuplicateRecordError')
           ..add('success', success)
           ..add('message', message)
           ..add('newId', newId)
@@ -69,9 +69,10 @@ class _$DuplicateRecordError extends DuplicateRecordError {
   }
 }
 
-class DuplicateRecordErrorBuilder
-    implements Builder<DuplicateRecordError, DuplicateRecordErrorBuilder> {
-  _$DuplicateRecordError? _$v;
+class ApiDuplicateRecordErrorBuilder
+    implements
+        Builder<ApiDuplicateRecordError, ApiDuplicateRecordErrorBuilder> {
+  _$ApiDuplicateRecordError? _$v;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -93,11 +94,11 @@ class DuplicateRecordErrorBuilder
   String? get newSlug => _$this._newSlug;
   set newSlug(String? newSlug) => _$this._newSlug = newSlug;
 
-  DuplicateRecordErrorBuilder() {
-    DuplicateRecordError._defaults(this);
+  ApiDuplicateRecordErrorBuilder() {
+    ApiDuplicateRecordError._defaults(this);
   }
 
-  DuplicateRecordErrorBuilder get _$this {
+  ApiDuplicateRecordErrorBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _success = $v.success;
@@ -111,21 +112,21 @@ class DuplicateRecordErrorBuilder
   }
 
   @override
-  void replace(DuplicateRecordError other) {
-    _$v = other as _$DuplicateRecordError;
+  void replace(ApiDuplicateRecordError other) {
+    _$v = other as _$ApiDuplicateRecordError;
   }
 
   @override
-  void update(void Function(DuplicateRecordErrorBuilder)? updates) {
+  void update(void Function(ApiDuplicateRecordErrorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  DuplicateRecordError build() => _build();
+  ApiDuplicateRecordError build() => _build();
 
-  _$DuplicateRecordError _build() {
+  _$ApiDuplicateRecordError _build() {
     final _$result = _$v ??
-        _$DuplicateRecordError._(
+        _$ApiDuplicateRecordError._(
           success: success,
           message: message,
           newId: newId,

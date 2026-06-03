@@ -1,32 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'general_error.dart';
+part of 'api_deleted_error.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$GeneralError extends GeneralError {
+class _$ApiDeletedError extends ApiDeletedError {
   @override
   final bool? success;
   @override
   final String? message;
 
-  factory _$GeneralError([void Function(GeneralErrorBuilder)? updates]) =>
-      (GeneralErrorBuilder()..update(updates))._build();
+  factory _$ApiDeletedError([void Function(ApiDeletedErrorBuilder)? updates]) =>
+      (ApiDeletedErrorBuilder()..update(updates))._build();
 
-  _$GeneralError._({this.success, this.message}) : super._();
+  _$ApiDeletedError._({this.success, this.message}) : super._();
   @override
-  GeneralError rebuild(void Function(GeneralErrorBuilder) updates) =>
+  ApiDeletedError rebuild(void Function(ApiDeletedErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GeneralErrorBuilder toBuilder() => GeneralErrorBuilder()..replace(this);
+  ApiDeletedErrorBuilder toBuilder() => ApiDeletedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GeneralError &&
+    return other is ApiDeletedError &&
         success == other.success &&
         message == other.message;
   }
@@ -42,16 +42,16 @@ class _$GeneralError extends GeneralError {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'GeneralError')
+    return (newBuiltValueToStringHelper(r'ApiDeletedError')
           ..add('success', success)
           ..add('message', message))
         .toString();
   }
 }
 
-class GeneralErrorBuilder
-    implements Builder<GeneralError, GeneralErrorBuilder> {
-  _$GeneralError? _$v;
+class ApiDeletedErrorBuilder
+    implements Builder<ApiDeletedError, ApiDeletedErrorBuilder> {
+  _$ApiDeletedError? _$v;
 
   bool? _success;
   bool? get success => _$this._success;
@@ -61,11 +61,11 @@ class GeneralErrorBuilder
   String? get message => _$this._message;
   set message(String? message) => _$this._message = message;
 
-  GeneralErrorBuilder() {
-    GeneralError._defaults(this);
+  ApiDeletedErrorBuilder() {
+    ApiDeletedError._defaults(this);
   }
 
-  GeneralErrorBuilder get _$this {
+  ApiDeletedErrorBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _success = $v.success;
@@ -76,21 +76,21 @@ class GeneralErrorBuilder
   }
 
   @override
-  void replace(GeneralError other) {
-    _$v = other as _$GeneralError;
+  void replace(ApiDeletedError other) {
+    _$v = other as _$ApiDeletedError;
   }
 
   @override
-  void update(void Function(GeneralErrorBuilder)? updates) {
+  void update(void Function(ApiDeletedErrorBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  GeneralError build() => _build();
+  ApiDeletedError build() => _build();
 
-  _$GeneralError _build() {
+  _$ApiDeletedError _build() {
     final _$result = _$v ??
-        _$GeneralError._(
+        _$ApiDeletedError._(
           success: success,
           message: message,
         );

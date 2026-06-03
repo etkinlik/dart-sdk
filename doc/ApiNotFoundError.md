@@ -1,4 +1,4 @@
-# etkinlik_io_api.model.AuthorizationError
+# etkinlik_io_api.model.ApiNotFoundError
 
 ## Load the model package
 ```dart

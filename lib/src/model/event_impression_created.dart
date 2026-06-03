@@ -6,43 +6,39 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'deleted_error.g.dart';
+part 'event_impression_created.g.dart';
 
-/// DeletedError
+/// EventImpressionCreated
 ///
 /// Properties:
-/// * [success] 
-/// * [message] - Error message (Turkish in API responses).
+/// * [success] - true when the operation succeeded.
 @BuiltValue()
-abstract class DeletedError implements Built<DeletedError, DeletedErrorBuilder> {
+abstract class EventImpressionCreated implements Built<EventImpressionCreated, EventImpressionCreatedBuilder> {
+  /// true when the operation succeeded.
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
-  /// Error message (Turkish in API responses).
-  @BuiltValueField(wireName: r'message')
-  String? get message;
+  EventImpressionCreated._();
 
-  DeletedError._();
-
-  factory DeletedError([void updates(DeletedErrorBuilder b)]) = _$DeletedError;
+  factory EventImpressionCreated([void updates(EventImpressionCreatedBuilder b)]) = _$EventImpressionCreated;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(DeletedErrorBuilder b) => b;
+  static void _defaults(EventImpressionCreatedBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeletedError> get serializer => _$DeletedErrorSerializer();
+  static Serializer<EventImpressionCreated> get serializer => _$EventImpressionCreatedSerializer();
 }
 
-class _$DeletedErrorSerializer implements PrimitiveSerializer<DeletedError> {
+class _$EventImpressionCreatedSerializer implements PrimitiveSerializer<EventImpressionCreated> {
   @override
-  final Iterable<Type> types = const [DeletedError, _$DeletedError];
+  final Iterable<Type> types = const [EventImpressionCreated, _$EventImpressionCreated];
 
   @override
-  final String wireName = r'DeletedError';
+  final String wireName = r'EventImpressionCreated';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    DeletedError object, {
+    EventImpressionCreated object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.success != null) {
@@ -52,19 +48,12 @@ class _$DeletedErrorSerializer implements PrimitiveSerializer<DeletedError> {
         specifiedType: const FullType(bool),
       );
     }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    DeletedError object, {
+    EventImpressionCreated object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -75,7 +64,7 @@ class _$DeletedErrorSerializer implements PrimitiveSerializer<DeletedError> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required DeletedErrorBuilder result,
+    required EventImpressionCreatedBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -89,13 +78,6 @@ class _$DeletedErrorSerializer implements PrimitiveSerializer<DeletedError> {
           ) as bool;
           result.success = valueDes;
           break;
-        case r'message':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.message = valueDes;
-          break;
         default:
           unhandled.add(key);
           unhandled.add(value);
@@ -105,12 +87,12 @@ class _$DeletedErrorSerializer implements PrimitiveSerializer<DeletedError> {
   }
 
   @override
-  DeletedError deserialize(
+  EventImpressionCreated deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = DeletedErrorBuilder();
+    final result = EventImpressionCreatedBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

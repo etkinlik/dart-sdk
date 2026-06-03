@@ -1,4 +1,4 @@
-# etkinlik_io_api.model.EventImpressionRecordOk
+# etkinlik_io_api.model.ApiGeneralError
 
 ## Load the model package
 ```dart
@@ -8,7 +8,8 @@ import 'package:etkinlik_io_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** | true when the operation succeeded. | [optional] 
+**success** | **bool** |  | [optional] 
+**message** | **String** | Error message (Turkish in API responses). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
