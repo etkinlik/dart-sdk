@@ -1,4 +1,4 @@
-# etkinlik_io_api (EXPERIMENTAL)
+# etkinlik_io_api
 API for integrating with event content aggregated and categorized from
 many sources and organizers. Use this documentation to build applications
 on top of Etkinlik.io event data.
@@ -30,8 +30,8 @@ If this Dart package is published to Github, please include the following in pub
 dependencies:
   etkinlik_io_api:
     git:
-      url: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-      #ref: main
+      url: https://github.com/etkinlik/dart-sdk.git
+      #ref: master
 ```
 
 ### Local development
