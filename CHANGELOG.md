@@ -1,3 +1,7 @@
+## 2.0.4
+
+- Regenerated from OpenAPI 2.0.4; published via GitHub Actions OIDC under publisher `etkinlik.io`.
+
 ## 2.0.3
 
-- Regenerated from the Etkinlik.io OpenAPI specification.
+- Initial pub.dev release of the Etkinlik.io V2 API Dart client.
