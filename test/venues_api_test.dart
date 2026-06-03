@@ -16,7 +16,7 @@ void main() {
 
     // List venues
     //
-    //Future<ListVenues200Response> listVenues({ String cityIds, String districtIds, String neighborhoodIds, String statusIds, int skip, int take }) async
+    //Future<PaginatedVenues> listVenues({ String cityIds, String districtIds, String neighborhoodIds, String statusIds, int skip, int take }) async
     test('test listVenues', () async {
       // TODO
     });

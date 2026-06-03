@@ -1,35 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_venues200_response.dart';
+part of 'paginated_venues.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ListVenues200Response extends ListVenues200Response {
+class _$PaginatedVenues extends PaginatedVenues {
   @override
-  final Meta? meta;
+  final PaginationMeta? meta;
   @override
   final BuiltList<Venue>? items;
 
-  factory _$ListVenues200Response(
-          [void Function(ListVenues200ResponseBuilder)? updates]) =>
-      (ListVenues200ResponseBuilder()..update(updates))._build();
+  factory _$PaginatedVenues([void Function(PaginatedVenuesBuilder)? updates]) =>
+      (PaginatedVenuesBuilder()..update(updates))._build();
 
-  _$ListVenues200Response._({this.meta, this.items}) : super._();
+  _$PaginatedVenues._({this.meta, this.items}) : super._();
   @override
-  ListVenues200Response rebuild(
-          void Function(ListVenues200ResponseBuilder) updates) =>
+  PaginatedVenues rebuild(void Function(PaginatedVenuesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ListVenues200ResponseBuilder toBuilder() =>
-      ListVenues200ResponseBuilder()..replace(this);
+  PaginatedVenuesBuilder toBuilder() => PaginatedVenuesBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ListVenues200Response &&
+    return other is PaginatedVenues &&
         meta == other.meta &&
         items == other.items;
   }
@@ -45,30 +42,30 @@ class _$ListVenues200Response extends ListVenues200Response {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ListVenues200Response')
+    return (newBuiltValueToStringHelper(r'PaginatedVenues')
           ..add('meta', meta)
           ..add('items', items))
         .toString();
   }
 }
 
-class ListVenues200ResponseBuilder
-    implements Builder<ListVenues200Response, ListVenues200ResponseBuilder> {
-  _$ListVenues200Response? _$v;
+class PaginatedVenuesBuilder
+    implements Builder<PaginatedVenues, PaginatedVenuesBuilder> {
+  _$PaginatedVenues? _$v;
 
-  MetaBuilder? _meta;
-  MetaBuilder get meta => _$this._meta ??= MetaBuilder();
-  set meta(MetaBuilder? meta) => _$this._meta = meta;
+  PaginationMetaBuilder? _meta;
+  PaginationMetaBuilder get meta => _$this._meta ??= PaginationMetaBuilder();
+  set meta(PaginationMetaBuilder? meta) => _$this._meta = meta;
 
   ListBuilder<Venue>? _items;
   ListBuilder<Venue> get items => _$this._items ??= ListBuilder<Venue>();
   set items(ListBuilder<Venue>? items) => _$this._items = items;
 
-  ListVenues200ResponseBuilder() {
-    ListVenues200Response._defaults(this);
+  PaginatedVenuesBuilder() {
+    PaginatedVenues._defaults(this);
   }
 
-  ListVenues200ResponseBuilder get _$this {
+  PaginatedVenuesBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _meta = $v.meta?.toBuilder();
@@ -79,23 +76,23 @@ class ListVenues200ResponseBuilder
   }
 
   @override
-  void replace(ListVenues200Response other) {
-    _$v = other as _$ListVenues200Response;
+  void replace(PaginatedVenues other) {
+    _$v = other as _$PaginatedVenues;
   }
 
   @override
-  void update(void Function(ListVenues200ResponseBuilder)? updates) {
+  void update(void Function(PaginatedVenuesBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ListVenues200Response build() => _build();
+  PaginatedVenues build() => _build();
 
-  _$ListVenues200Response _build() {
-    _$ListVenues200Response _$result;
+  _$PaginatedVenues _build() {
+    _$PaginatedVenues _$result;
     try {
       _$result = _$v ??
-          _$ListVenues200Response._(
+          _$PaginatedVenues._(
             meta: _meta?.build(),
             items: _items?.build(),
           );
@@ -108,7 +105,7 @@ class ListVenues200ResponseBuilder
         _items?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'ListVenues200Response', _$failedField, e.toString());
+            r'PaginatedVenues', _$failedField, e.toString());
       }
       rethrow;
     }

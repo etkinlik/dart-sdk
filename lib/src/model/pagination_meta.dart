@@ -6,39 +6,39 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'meta.g.dart';
+part 'pagination_meta.g.dart';
 
-/// Meta
+/// Pagination metadata for list endpoints that return meta + items.
 ///
 /// Properties:
 /// * [totalCount] - Total number of matching records.
 @BuiltValue()
-abstract class Meta implements Built<Meta, MetaBuilder> {
+abstract class PaginationMeta implements Built<PaginationMeta, PaginationMetaBuilder> {
   /// Total number of matching records.
   @BuiltValueField(wireName: r'total_count')
   int? get totalCount;
 
-  Meta._();
+  PaginationMeta._();
 
-  factory Meta([void updates(MetaBuilder b)]) = _$Meta;
+  factory PaginationMeta([void updates(PaginationMetaBuilder b)]) = _$PaginationMeta;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(MetaBuilder b) => b;
+  static void _defaults(PaginationMetaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<Meta> get serializer => _$MetaSerializer();
+  static Serializer<PaginationMeta> get serializer => _$PaginationMetaSerializer();
 }
 
-class _$MetaSerializer implements PrimitiveSerializer<Meta> {
+class _$PaginationMetaSerializer implements PrimitiveSerializer<PaginationMeta> {
   @override
-  final Iterable<Type> types = const [Meta, _$Meta];
+  final Iterable<Type> types = const [PaginationMeta, _$PaginationMeta];
 
   @override
-  final String wireName = r'Meta';
+  final String wireName = r'PaginationMeta';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    Meta object, {
+    PaginationMeta object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.totalCount != null) {
@@ -53,7 +53,7 @@ class _$MetaSerializer implements PrimitiveSerializer<Meta> {
   @override
   Object serialize(
     Serializers serializers,
-    Meta object, {
+    PaginationMeta object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -64,7 +64,7 @@ class _$MetaSerializer implements PrimitiveSerializer<Meta> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required MetaBuilder result,
+    required PaginationMetaBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -87,12 +87,12 @@ class _$MetaSerializer implements PrimitiveSerializer<Meta> {
   }
 
   @override
-  Meta deserialize(
+  PaginationMeta deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = MetaBuilder();
+    final result = PaginationMetaBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

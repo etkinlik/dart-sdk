@@ -26,11 +26,11 @@ import 'package:etkinlik_io_api/src/model/event_impression_request.dart';
 import 'package:etkinlik_io_api/src/model/event_venue_data.dart';
 import 'package:etkinlik_io_api/src/model/format.dart';
 import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/list_events200_response.dart';
-import 'package:etkinlik_io_api/src/model/list_venues200_response.dart';
-import 'package:etkinlik_io_api/src/model/meta.dart';
 import 'package:etkinlik_io_api/src/model/neighborhood.dart';
 import 'package:etkinlik_io_api/src/model/not_found_error.dart';
+import 'package:etkinlik_io_api/src/model/paginated_events.dart';
+import 'package:etkinlik_io_api/src/model/paginated_venues.dart';
+import 'package:etkinlik_io_api/src/model/pagination_meta.dart';
 import 'package:etkinlik_io_api/src/model/tag.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
 import 'package:etkinlik_io_api/src/model/venue_manual.dart';
@@ -50,11 +50,11 @@ part 'serializers.g.dart';
   EventVenueData,
   Format,
   GeneralError,
-  ListEvents200Response,
-  ListVenues200Response,
-  Meta,
   Neighborhood,
   NotFoundError,
+  PaginatedEvents,
+  PaginatedVenues,
+  PaginationMeta,
   Tag,
   Venue,
   VenueManual,

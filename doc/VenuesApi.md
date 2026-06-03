@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listVenues**
-> ListVenues200Response listVenues(cityIds, districtIds, neighborhoodIds, statusIds, skip, take)
+> PaginatedVenues listVenues(cityIds, districtIds, neighborhoodIds, statusIds, skip, take)
 
 List venues
 
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListVenues200Response**](ListVenues200Response.md)
+[**PaginatedVenues**](PaginatedVenues.md)
 
 ### Authorization
 

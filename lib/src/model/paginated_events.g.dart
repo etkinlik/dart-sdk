@@ -1,35 +1,32 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'list_events200_response.dart';
+part of 'paginated_events.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$ListEvents200Response extends ListEvents200Response {
+class _$PaginatedEvents extends PaginatedEvents {
   @override
-  final Meta? meta;
+  final PaginationMeta? meta;
   @override
   final BuiltList<Event>? items;
 
-  factory _$ListEvents200Response(
-          [void Function(ListEvents200ResponseBuilder)? updates]) =>
-      (ListEvents200ResponseBuilder()..update(updates))._build();
+  factory _$PaginatedEvents([void Function(PaginatedEventsBuilder)? updates]) =>
+      (PaginatedEventsBuilder()..update(updates))._build();
 
-  _$ListEvents200Response._({this.meta, this.items}) : super._();
+  _$PaginatedEvents._({this.meta, this.items}) : super._();
   @override
-  ListEvents200Response rebuild(
-          void Function(ListEvents200ResponseBuilder) updates) =>
+  PaginatedEvents rebuild(void Function(PaginatedEventsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ListEvents200ResponseBuilder toBuilder() =>
-      ListEvents200ResponseBuilder()..replace(this);
+  PaginatedEventsBuilder toBuilder() => PaginatedEventsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ListEvents200Response &&
+    return other is PaginatedEvents &&
         meta == other.meta &&
         items == other.items;
   }
@@ -45,30 +42,30 @@ class _$ListEvents200Response extends ListEvents200Response {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ListEvents200Response')
+    return (newBuiltValueToStringHelper(r'PaginatedEvents')
           ..add('meta', meta)
           ..add('items', items))
         .toString();
   }
 }
 
-class ListEvents200ResponseBuilder
-    implements Builder<ListEvents200Response, ListEvents200ResponseBuilder> {
-  _$ListEvents200Response? _$v;
+class PaginatedEventsBuilder
+    implements Builder<PaginatedEvents, PaginatedEventsBuilder> {
+  _$PaginatedEvents? _$v;
 
-  MetaBuilder? _meta;
-  MetaBuilder get meta => _$this._meta ??= MetaBuilder();
-  set meta(MetaBuilder? meta) => _$this._meta = meta;
+  PaginationMetaBuilder? _meta;
+  PaginationMetaBuilder get meta => _$this._meta ??= PaginationMetaBuilder();
+  set meta(PaginationMetaBuilder? meta) => _$this._meta = meta;
 
   ListBuilder<Event>? _items;
   ListBuilder<Event> get items => _$this._items ??= ListBuilder<Event>();
   set items(ListBuilder<Event>? items) => _$this._items = items;
 
-  ListEvents200ResponseBuilder() {
-    ListEvents200Response._defaults(this);
+  PaginatedEventsBuilder() {
+    PaginatedEvents._defaults(this);
   }
 
-  ListEvents200ResponseBuilder get _$this {
+  PaginatedEventsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _meta = $v.meta?.toBuilder();
@@ -79,23 +76,23 @@ class ListEvents200ResponseBuilder
   }
 
   @override
-  void replace(ListEvents200Response other) {
-    _$v = other as _$ListEvents200Response;
+  void replace(PaginatedEvents other) {
+    _$v = other as _$PaginatedEvents;
   }
 
   @override
-  void update(void Function(ListEvents200ResponseBuilder)? updates) {
+  void update(void Function(PaginatedEventsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ListEvents200Response build() => _build();
+  PaginatedEvents build() => _build();
 
-  _$ListEvents200Response _build() {
-    _$ListEvents200Response _$result;
+  _$PaginatedEvents _build() {
+    _$PaginatedEvents _$result;
     try {
       _$result = _$v ??
-          _$ListEvents200Response._(
+          _$PaginatedEvents._(
             meta: _meta?.build(),
             items: _items?.build(),
           );
@@ -108,7 +105,7 @@ class ListEvents200ResponseBuilder
         _items?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
-            r'ListEvents200Response', _$failedField, e.toString());
+            r'PaginatedEvents', _$failedField, e.toString());
       }
       rethrow;
     }

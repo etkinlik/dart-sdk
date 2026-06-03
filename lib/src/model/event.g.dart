@@ -6,21 +6,21 @@ part of 'event.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const EventVenueTypeEnum _$eventVenueTypeEnum_VENUE =
-    const EventVenueTypeEnum._('VENUE');
-const EventVenueTypeEnum _$eventVenueTypeEnum_ONLINE =
-    const EventVenueTypeEnum._('ONLINE');
-const EventVenueTypeEnum _$eventVenueTypeEnum_MANUAL =
-    const EventVenueTypeEnum._('MANUAL');
+const EventVenueTypeEnum _$eventVenueTypeEnum_venue =
+    const EventVenueTypeEnum._('venue');
+const EventVenueTypeEnum _$eventVenueTypeEnum_online =
+    const EventVenueTypeEnum._('online');
+const EventVenueTypeEnum _$eventVenueTypeEnum_manual =
+    const EventVenueTypeEnum._('manual');
 
 EventVenueTypeEnum _$eventVenueTypeEnumValueOf(String name) {
   switch (name) {
-    case 'VENUE':
-      return _$eventVenueTypeEnum_VENUE;
-    case 'ONLINE':
-      return _$eventVenueTypeEnum_ONLINE;
-    case 'MANUAL':
-      return _$eventVenueTypeEnum_MANUAL;
+    case 'venue':
+      return _$eventVenueTypeEnum_venue;
+    case 'online':
+      return _$eventVenueTypeEnum_online;
+    case 'manual':
+      return _$eventVenueTypeEnum_manual;
     default:
       throw ArgumentError(name);
   }
@@ -28,9 +28,9 @@ EventVenueTypeEnum _$eventVenueTypeEnumValueOf(String name) {
 
 final BuiltSet<EventVenueTypeEnum> _$eventVenueTypeEnumValues =
     BuiltSet<EventVenueTypeEnum>(const <EventVenueTypeEnum>[
-  _$eventVenueTypeEnum_VENUE,
-  _$eventVenueTypeEnum_ONLINE,
-  _$eventVenueTypeEnum_MANUAL,
+  _$eventVenueTypeEnum_venue,
+  _$eventVenueTypeEnum_online,
+  _$eventVenueTypeEnum_manual,
 ]);
 
 Serializer<EventVenueTypeEnum> _$eventVenueTypeEnumSerializer =
@@ -39,14 +39,14 @@ Serializer<EventVenueTypeEnum> _$eventVenueTypeEnumSerializer =
 class _$EventVenueTypeEnumSerializer
     implements PrimitiveSerializer<EventVenueTypeEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'VENUE': 'VENUE',
-    'ONLINE': 'ONLINE',
-    'MANUAL': 'MANUAL',
+    'venue': 'VENUE',
+    'online': 'ONLINE',
+    'manual': 'MANUAL',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'VENUE': 'VENUE',
-    'ONLINE': 'ONLINE',
-    'MANUAL': 'MANUAL',
+    'VENUE': 'venue',
+    'ONLINE': 'online',
+    'MANUAL': 'manual',
   };
 
   @override

@@ -40,6 +40,13 @@ abstract class EventVenueData implements Built<EventVenueData, EventVenueDataBui
   /// One Of [Venue], [VenueManual]
   OneOf get oneOf;
 
+  static const String discriminatorFieldName = r'venue_type';
+
+  static const Map<String, Type> discriminatorMapping = {
+    r'MANUAL': VenueManual,
+    r'VENUE': Venue,
+  };
+
   EventVenueData._();
 
   factory EventVenueData([void updates(EventVenueDataBuilder b)]) = _$EventVenueData;
@@ -49,6 +56,29 @@ abstract class EventVenueData implements Built<EventVenueData, EventVenueDataBui
 
   @BuiltValueSerializer(custom: true)
   static Serializer<EventVenueData> get serializer => _$EventVenueDataSerializer();
+}
+
+extension EventVenueDataDiscriminatorExt on EventVenueData {
+    String? get discriminatorValue {
+        if (this is VenueManual) {
+            return r'MANUAL';
+        }
+        if (this is Venue) {
+            return r'VENUE';
+        }
+        return null;
+    }
+}
+extension EventVenueDataBuilderDiscriminatorExt on EventVenueDataBuilder {
+    String? get discriminatorValue {
+        if (this is VenueManualBuilder) {
+            return r'MANUAL';
+        }
+        if (this is VenueBuilder) {
+            return r'VENUE';
+        }
+        return null;
+    }
 }
 
 class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> {
@@ -83,9 +113,32 @@ class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> 
   }) {
     final result = EventVenueDataBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(Venue), FullType(VenueManual), ]);
+    final serializedList = (serialized as Iterable<Object?>).toList();
+    final discIndex = serializedList.indexOf(EventVenueData.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    final oneOfTypes = [VenueManual, Venue, ];
+    Object oneOfResult;
+    Type oneOfType;
+    switch (discValue) {
+      case r'MANUAL':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(VenueManual),
+        ) as VenueManual;
+        oneOfType = VenueManual;
+        break;
+      case r'VENUE':
+        oneOfResult = serializers.deserialize(
+          oneOfDataSrc,
+          specifiedType: FullType(Venue),
+        ) as Venue;
+        oneOfType = Venue;
+        break;
+      default:
+        throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+    }
+    result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
 }

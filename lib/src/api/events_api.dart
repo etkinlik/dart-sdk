@@ -16,8 +16,8 @@ import 'package:etkinlik_io_api/src/model/event.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_record_ok.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_request.dart';
 import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/list_events200_response.dart';
 import 'package:etkinlik_io_api/src/model/not_found_error.dart';
+import 'package:etkinlik_io_api/src/model/paginated_events.dart';
 
 class EventsApi {
 
@@ -129,9 +129,9 @@ class EventsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ListEvents200Response] as data
+  /// Returns a [Future] containing a [Response] with a [PaginatedEvents] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListEvents200Response>> listEvents({ 
+  Future<Response<PaginatedEvents>> listEvents({ 
     String? formatIds,
     String? categoryIds,
     String? venueIds,
@@ -189,14 +189,14 @@ class EventsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ListEvents200Response? _responseData;
+    PaginatedEvents? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ListEvents200Response),
-      ) as ListEvents200Response;
+        specifiedType: const FullType(PaginatedEvents),
+      ) as PaginatedEvents;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -208,7 +208,7 @@ class EventsApi {
       );
     }
 
-    return Response<ListEvents200Response>(
+    return Response<PaginatedEvents>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

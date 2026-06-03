@@ -552,13 +552,13 @@ class EventVenueTypeEnum extends EnumClass {
 
   /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
   @BuiltValueEnumConst(wireName: r'VENUE')
-  static const EventVenueTypeEnum VENUE = _$eventVenueTypeEnum_VENUE;
+  static const EventVenueTypeEnum venue = _$eventVenueTypeEnum_venue;
   /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
   @BuiltValueEnumConst(wireName: r'ONLINE')
-  static const EventVenueTypeEnum ONLINE = _$eventVenueTypeEnum_ONLINE;
+  static const EventVenueTypeEnum online = _$eventVenueTypeEnum_online;
   /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
   @BuiltValueEnumConst(wireName: r'MANUAL')
-  static const EventVenueTypeEnum MANUAL = _$eventVenueTypeEnum_MANUAL;
+  static const EventVenueTypeEnum manual = _$eventVenueTypeEnum_manual;
 
   static Serializer<EventVenueTypeEnum> get serializer => _$eventVenueTypeEnumSerializer;
 

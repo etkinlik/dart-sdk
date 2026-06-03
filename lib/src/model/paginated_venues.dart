@@ -3,55 +3,55 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:etkinlik_io_api/src/model/pagination_meta.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
-import 'package:etkinlik_io_api/src/model/meta.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'list_venues200_response.g.dart';
+part 'paginated_venues.g.dart';
 
-/// ListVenues200Response
+/// Paginated list of venues (meta + items).
 ///
 /// Properties:
 /// * [meta] 
 /// * [items] 
 @BuiltValue()
-abstract class ListVenues200Response implements Built<ListVenues200Response, ListVenues200ResponseBuilder> {
+abstract class PaginatedVenues implements Built<PaginatedVenues, PaginatedVenuesBuilder> {
   @BuiltValueField(wireName: r'meta')
-  Meta? get meta;
+  PaginationMeta? get meta;
 
   @BuiltValueField(wireName: r'items')
   BuiltList<Venue>? get items;
 
-  ListVenues200Response._();
+  PaginatedVenues._();
 
-  factory ListVenues200Response([void updates(ListVenues200ResponseBuilder b)]) = _$ListVenues200Response;
+  factory PaginatedVenues([void updates(PaginatedVenuesBuilder b)]) = _$PaginatedVenues;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ListVenues200ResponseBuilder b) => b;
+  static void _defaults(PaginatedVenuesBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListVenues200Response> get serializer => _$ListVenues200ResponseSerializer();
+  static Serializer<PaginatedVenues> get serializer => _$PaginatedVenuesSerializer();
 }
 
-class _$ListVenues200ResponseSerializer implements PrimitiveSerializer<ListVenues200Response> {
+class _$PaginatedVenuesSerializer implements PrimitiveSerializer<PaginatedVenues> {
   @override
-  final Iterable<Type> types = const [ListVenues200Response, _$ListVenues200Response];
+  final Iterable<Type> types = const [PaginatedVenues, _$PaginatedVenues];
 
   @override
-  final String wireName = r'ListVenues200Response';
+  final String wireName = r'PaginatedVenues';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    ListVenues200Response object, {
+    PaginatedVenues object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.meta != null) {
       yield r'meta';
       yield serializers.serialize(
         object.meta,
-        specifiedType: const FullType(Meta),
+        specifiedType: const FullType(PaginationMeta),
       );
     }
     if (object.items != null) {
@@ -66,7 +66,7 @@ class _$ListVenues200ResponseSerializer implements PrimitiveSerializer<ListVenue
   @override
   Object serialize(
     Serializers serializers,
-    ListVenues200Response object, {
+    PaginatedVenues object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -77,7 +77,7 @@ class _$ListVenues200ResponseSerializer implements PrimitiveSerializer<ListVenue
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required ListVenues200ResponseBuilder result,
+    required PaginatedVenuesBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -87,8 +87,8 @@ class _$ListVenues200ResponseSerializer implements PrimitiveSerializer<ListVenue
         case r'meta':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Meta),
-          ) as Meta;
+            specifiedType: const FullType(PaginationMeta),
+          ) as PaginationMeta;
           result.meta.replace(valueDes);
           break;
         case r'items':
@@ -107,12 +107,12 @@ class _$ListVenues200ResponseSerializer implements PrimitiveSerializer<ListVenue
   }
 
   @override
-  ListVenues200Response deserialize(
+  PaginatedVenues deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = ListVenues200ResponseBuilder();
+    final result = PaginatedVenuesBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

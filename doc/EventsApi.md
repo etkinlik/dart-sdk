@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listEvents**
-> ListEvents200Response listEvents(formatIds, categoryIds, venueIds, cityIds, startGte, endLte, sortBy, skip, take)
+> PaginatedEvents listEvents(formatIds, categoryIds, venueIds, cityIds, startGte, endLte, sortBy, skip, take)
 
 List events
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListEvents200Response**](ListEvents200Response.md)
+[**PaginatedEvents**](PaginatedEvents.md)
 
 ### Authorization
 

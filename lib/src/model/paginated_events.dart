@@ -3,55 +3,55 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:etkinlik_io_api/src/model/meta.dart';
+import 'package:etkinlik_io_api/src/model/pagination_meta.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:etkinlik_io_api/src/model/event.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'list_events200_response.g.dart';
+part 'paginated_events.g.dart';
 
-/// ListEvents200Response
+/// Paginated list of events (meta + items).
 ///
 /// Properties:
 /// * [meta] 
 /// * [items] 
 @BuiltValue()
-abstract class ListEvents200Response implements Built<ListEvents200Response, ListEvents200ResponseBuilder> {
+abstract class PaginatedEvents implements Built<PaginatedEvents, PaginatedEventsBuilder> {
   @BuiltValueField(wireName: r'meta')
-  Meta? get meta;
+  PaginationMeta? get meta;
 
   @BuiltValueField(wireName: r'items')
   BuiltList<Event>? get items;
 
-  ListEvents200Response._();
+  PaginatedEvents._();
 
-  factory ListEvents200Response([void updates(ListEvents200ResponseBuilder b)]) = _$ListEvents200Response;
+  factory PaginatedEvents([void updates(PaginatedEventsBuilder b)]) = _$PaginatedEvents;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ListEvents200ResponseBuilder b) => b;
+  static void _defaults(PaginatedEventsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListEvents200Response> get serializer => _$ListEvents200ResponseSerializer();
+  static Serializer<PaginatedEvents> get serializer => _$PaginatedEventsSerializer();
 }
 
-class _$ListEvents200ResponseSerializer implements PrimitiveSerializer<ListEvents200Response> {
+class _$PaginatedEventsSerializer implements PrimitiveSerializer<PaginatedEvents> {
   @override
-  final Iterable<Type> types = const [ListEvents200Response, _$ListEvents200Response];
+  final Iterable<Type> types = const [PaginatedEvents, _$PaginatedEvents];
 
   @override
-  final String wireName = r'ListEvents200Response';
+  final String wireName = r'PaginatedEvents';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    ListEvents200Response object, {
+    PaginatedEvents object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.meta != null) {
       yield r'meta';
       yield serializers.serialize(
         object.meta,
-        specifiedType: const FullType(Meta),
+        specifiedType: const FullType(PaginationMeta),
       );
     }
     if (object.items != null) {
@@ -66,7 +66,7 @@ class _$ListEvents200ResponseSerializer implements PrimitiveSerializer<ListEvent
   @override
   Object serialize(
     Serializers serializers,
-    ListEvents200Response object, {
+    PaginatedEvents object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -77,7 +77,7 @@ class _$ListEvents200ResponseSerializer implements PrimitiveSerializer<ListEvent
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required ListEvents200ResponseBuilder result,
+    required PaginatedEventsBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -87,8 +87,8 @@ class _$ListEvents200ResponseSerializer implements PrimitiveSerializer<ListEvent
         case r'meta':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Meta),
-          ) as Meta;
+            specifiedType: const FullType(PaginationMeta),
+          ) as PaginationMeta;
           result.meta.replace(valueDes);
           break;
         case r'items':
@@ -107,12 +107,12 @@ class _$ListEvents200ResponseSerializer implements PrimitiveSerializer<ListEvent
   }
 
   @override
-  ListEvents200Response deserialize(
+  PaginatedEvents deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = ListEvents200ResponseBuilder();
+    final result = PaginatedEventsBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

@@ -1,30 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meta.dart';
+part of 'pagination_meta.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$Meta extends Meta {
+class _$PaginationMeta extends PaginationMeta {
   @override
   final int? totalCount;
 
-  factory _$Meta([void Function(MetaBuilder)? updates]) =>
-      (MetaBuilder()..update(updates))._build();
+  factory _$PaginationMeta([void Function(PaginationMetaBuilder)? updates]) =>
+      (PaginationMetaBuilder()..update(updates))._build();
 
-  _$Meta._({this.totalCount}) : super._();
+  _$PaginationMeta._({this.totalCount}) : super._();
   @override
-  Meta rebuild(void Function(MetaBuilder) updates) =>
+  PaginationMeta rebuild(void Function(PaginationMetaBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MetaBuilder toBuilder() => MetaBuilder()..replace(this);
+  PaginationMetaBuilder toBuilder() => PaginationMetaBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Meta && totalCount == other.totalCount;
+    return other is PaginationMeta && totalCount == other.totalCount;
   }
 
   @override
@@ -37,23 +37,25 @@ class _$Meta extends Meta {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Meta')..add('totalCount', totalCount))
+    return (newBuiltValueToStringHelper(r'PaginationMeta')
+          ..add('totalCount', totalCount))
         .toString();
   }
 }
 
-class MetaBuilder implements Builder<Meta, MetaBuilder> {
-  _$Meta? _$v;
+class PaginationMetaBuilder
+    implements Builder<PaginationMeta, PaginationMetaBuilder> {
+  _$PaginationMeta? _$v;
 
   int? _totalCount;
   int? get totalCount => _$this._totalCount;
   set totalCount(int? totalCount) => _$this._totalCount = totalCount;
 
-  MetaBuilder() {
-    Meta._defaults(this);
+  PaginationMetaBuilder() {
+    PaginationMeta._defaults(this);
   }
 
-  MetaBuilder get _$this {
+  PaginationMetaBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _totalCount = $v.totalCount;
@@ -63,21 +65,21 @@ class MetaBuilder implements Builder<Meta, MetaBuilder> {
   }
 
   @override
-  void replace(Meta other) {
-    _$v = other as _$Meta;
+  void replace(PaginationMeta other) {
+    _$v = other as _$PaginationMeta;
   }
 
   @override
-  void update(void Function(MetaBuilder)? updates) {
+  void update(void Function(PaginationMetaBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  Meta build() => _build();
+  PaginationMeta build() => _build();
 
-  _$Meta _build() {
+  _$PaginationMeta _build() {
     final _$result = _$v ??
-        _$Meta._(
+        _$PaginationMeta._(
           totalCount: totalCount,
         );
     replace(_$result);

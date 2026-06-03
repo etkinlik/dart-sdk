@@ -11,8 +11,8 @@ import 'package:dio/dio.dart';
 import 'package:etkinlik_io_api/src/api_util.dart';
 import 'package:etkinlik_io_api/src/model/authorization_error.dart';
 import 'package:etkinlik_io_api/src/model/general_error.dart';
-import 'package:etkinlik_io_api/src/model/list_venues200_response.dart';
 import 'package:etkinlik_io_api/src/model/not_found_error.dart';
+import 'package:etkinlik_io_api/src/model/paginated_venues.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
 
 class VenuesApi {
@@ -122,9 +122,9 @@ class VenuesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ListVenues200Response] as data
+  /// Returns a [Future] containing a [Response] with a [PaginatedVenues] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListVenues200Response>> listVenues({ 
+  Future<Response<PaginatedVenues>> listVenues({ 
     String? cityIds,
     String? districtIds,
     String? neighborhoodIds,
@@ -176,14 +176,14 @@ class VenuesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ListVenues200Response? _responseData;
+    PaginatedVenues? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(ListVenues200Response),
-      ) as ListVenues200Response;
+        specifiedType: const FullType(PaginatedVenues),
+      ) as PaginatedVenues;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -195,7 +195,7 @@ class VenuesApi {
       );
     }
 
-    return Response<ListVenues200Response>(
+    return Response<PaginatedVenues>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
