@@ -1,7 +1,8 @@
 name: etkinlik_io_api
 version: 2.0.2
 description: Official Dart and Flutter client for the Etkinlik.io V2 REST API. Access events
-homepage: homepage
+homepage: https://etkinlik.io/api-bilgi
+repository: https://github.com/etkinlik/dart-sdk
 
 
 environment:
