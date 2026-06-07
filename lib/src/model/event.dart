@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:etkinlik_io_api/src/model/venue.dart';
 import 'package:etkinlik_io_api/src/model/tag.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:etkinlik_io_api/src/model/event_venue_data.dart';
@@ -21,9 +22,9 @@ part 'event.g.dart';
 /// * [slug] - Event slug.
 /// * [url] - Event URL on Etkinlik.io.
 /// * [content] - Event HTML content with detailed information.
-/// * [start] - Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field.
+/// * [start] - **Deprecated.** Legacy event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Still returned for backward compatibility. New integrations must use `start_r001` with `timezone`.
 /// * [startR001] - Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations.
-/// * [end] - Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours.
+/// * [end] - **Deprecated.** Legacy event end in ISO8601 with offset for the event's `timezone`. Still returned for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. New integrations must use `end_r001` with `timezone`.
 /// * [endR001] - Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.
 /// * [timezone] - IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.
 /// * [isFree] - `true` if the event is free, otherwise `false`.
@@ -40,6 +41,7 @@ part 'event.g.dart';
 /// * [iosUrl] - iOS app URL for the event.
 /// * [format]
 /// * [category]
+/// * [venue] - **Deprecated.** Legacy venue object; present only when `venue_type` is `VENUE` (same registered venue as `venue_data`). Still returned for backward compatibility. New integrations must use `venue_type` and `venue_data`.
 /// * [venueType] - Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
 /// * [venueData]
 /// * [tags] - Tags associated with the event.
@@ -65,7 +67,8 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'content')
   String? get content;
 
-  /// Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field.
+  /// **Deprecated.** Legacy event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Still returned for backward compatibility. New integrations must use `start_r001` with `timezone`.
+  @Deprecated('start has been deprecated')
   @BuiltValueField(wireName: r'start')
   DateTime? get start;
 
@@ -73,7 +76,8 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'start_r001')
   DateTime? get startR001;
 
-  /// Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours.
+  /// **Deprecated.** Legacy event end in ISO8601 with offset for the event's `timezone`. Still returned for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. New integrations must use `end_r001` with `timezone`.
+  @Deprecated('end has been deprecated')
   @BuiltValueField(wireName: r'end')
   DateTime? get end;
 
@@ -138,6 +142,11 @@ abstract class Event implements Built<Event, EventBuilder> {
 
   @BuiltValueField(wireName: r'category')
   Category? get category;
+
+  /// **Deprecated.** Legacy venue object; present only when `venue_type` is `VENUE` (same registered venue as `venue_data`). Still returned for backward compatibility. New integrations must use `venue_type` and `venue_data`.
+  @Deprecated('venue has been deprecated')
+  @BuiltValueField(wireName: r'venue')
+  Venue? get venue;
 
   /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
   @BuiltValueField(wireName: r'venue_type')
@@ -340,6 +349,13 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
       yield serializers.serialize(
         object.category,
         specifiedType: const FullType(Category),
+      );
+    }
+    if (object.venue != null) {
+      yield r'venue';
+      yield serializers.serialize(
+        object.venue,
+        specifiedType: const FullType.nullable(Venue),
       );
     }
     if (object.venueType != null) {
@@ -556,6 +572,14 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
             specifiedType: const FullType(Category),
           ) as Category;
           result.category.replace(valueDes);
+          break;
+        case r'venue':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(Venue),
+          ) as Venue?;
+          if (valueDes == null) continue;
+          result.venue.replace(valueDes);
           break;
         case r'venue_type':
           final valueDes = serializers.deserialize(

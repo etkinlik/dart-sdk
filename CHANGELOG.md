@@ -1,3 +1,9 @@
+## 2.0.9
+
+- Regenerated from OpenAPI 2.0.9; published via GitHub Actions OIDC under publisher `etkinlik.io`.
+- Event model: `start`, `end`, and `venue` marked **deprecated** in SDK and docs. Wire format unchanged.
+- New integrations: use `start_r001`, `end_r001`, `timezone`, and `venue_type` / `venue_data`.
+
 ## 2.0.8
 
 - Regenerated from OpenAPI 2.0.8; published via GitHub Actions OIDC under publisher `etkinlik.io`.

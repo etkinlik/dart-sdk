@@ -9,7 +9,7 @@ from your account.
 ```yaml
 # pubspec.yaml
 dependencies:
-  etkinlik_io_api: ^2.0.8
+  etkinlik_io_api: ^2.0.9
 ```
 
 ## Authenticate and list events

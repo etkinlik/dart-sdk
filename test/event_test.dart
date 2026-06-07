@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
+    // **Deprecated.** Legacy event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Still returned for backward compatibility. New integrations must use `start_r001` with `timezone`. 
     // DateTime start
     test('to test the property `start`', () async {
       // TODO
@@ -49,7 +49,7 @@ void main() {
       // TODO
     });
 
-    // Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
+    // **Deprecated.** Legacy event end in ISO8601 with offset for the event's `timezone`. Still returned for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. New integrations must use `end_r001` with `timezone`. 
     // DateTime end
     test('to test the property `end`', () async {
       // TODO
@@ -146,6 +146,12 @@ void main() {
 
     // Category category
     test('to test the property `category`', () async {
+      // TODO
+    });
+
+    // **Deprecated.** Legacy venue object; present only when `venue_type` is `VENUE` (same registered venue as `venue_data`). Still returned for backward compatibility. New integrations must use `venue_type` and `venue_data`. 
+    // Venue venue
+    test('to test the property `venue`', () async {
       // TODO
     });
 

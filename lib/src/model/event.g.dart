@@ -116,6 +116,8 @@ class _$Event extends Event {
   @override
   final Category? category;
   @override
+  final Venue? venue;
+  @override
   final EventVenueTypeEnum? venueType;
   @override
   final EventVenueData? venueData;
@@ -150,6 +152,7 @@ class _$Event extends Event {
       this.iosUrl,
       this.format,
       this.category,
+      this.venue,
       this.venueType,
       this.venueData,
       this.tags})
@@ -189,6 +192,7 @@ class _$Event extends Event {
         iosUrl == other.iosUrl &&
         format == other.format &&
         category == other.category &&
+        venue == other.venue &&
         venueType == other.venueType &&
         venueData == other.venueData &&
         tags == other.tags;
@@ -221,6 +225,7 @@ class _$Event extends Event {
     _$hash = $jc(_$hash, iosUrl.hashCode);
     _$hash = $jc(_$hash, format.hashCode);
     _$hash = $jc(_$hash, category.hashCode);
+    _$hash = $jc(_$hash, venue.hashCode);
     _$hash = $jc(_$hash, venueType.hashCode);
     _$hash = $jc(_$hash, venueData.hashCode);
     _$hash = $jc(_$hash, tags.hashCode);
@@ -255,6 +260,7 @@ class _$Event extends Event {
           ..add('iosUrl', iosUrl)
           ..add('format', format)
           ..add('category', category)
+          ..add('venue', venue)
           ..add('venueType', venueType)
           ..add('venueData', venueData)
           ..add('tags', tags))
@@ -361,6 +367,10 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   CategoryBuilder get category => _$this._category ??= CategoryBuilder();
   set category(CategoryBuilder? category) => _$this._category = category;
 
+  VenueBuilder? _venue;
+  VenueBuilder get venue => _$this._venue ??= VenueBuilder();
+  set venue(VenueBuilder? venue) => _$this._venue = venue;
+
   EventVenueTypeEnum? _venueType;
   EventVenueTypeEnum? get venueType => _$this._venueType;
   set venueType(EventVenueTypeEnum? venueType) => _$this._venueType = venueType;
@@ -406,6 +416,7 @@ class EventBuilder implements Builder<Event, EventBuilder> {
       _iosUrl = $v.iosUrl;
       _format = $v.format?.toBuilder();
       _category = $v.category?.toBuilder();
+      _venue = $v.venue?.toBuilder();
       _venueType = $v.venueType;
       _venueData = $v.venueData?.toBuilder();
       _tags = $v.tags?.toBuilder();
@@ -456,6 +467,7 @@ class EventBuilder implements Builder<Event, EventBuilder> {
             iosUrl: iosUrl,
             format: _format?.build(),
             category: _category?.build(),
+            venue: _venue?.build(),
             venueType: venueType,
             venueData: _venueData?.build(),
             tags: _tags?.build(),
@@ -467,6 +479,8 @@ class EventBuilder implements Builder<Event, EventBuilder> {
         _format?.build();
         _$failedField = 'category';
         _category?.build();
+        _$failedField = 'venue';
+        _venue?.build();
 
         _$failedField = 'venueData';
         _venueData?.build();
