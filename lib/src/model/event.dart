@@ -21,8 +21,11 @@ part 'event.g.dart';
 /// * [slug] - Event slug.
 /// * [url] - Event URL on Etkinlik.io.
 /// * [content] - Event HTML content with detailed information. 
-/// * [start] - Event start time in ISO8601 format.
-/// * [end] - Event end time in ISO8601 format.
+/// * [start] - Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
+/// * [startR001] - Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations. 
+/// * [end] - Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
+/// * [endR001] - Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations. 
+/// * [timezone] - IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
 /// * [isFree] - `true` if the event is free, otherwise `false`. 
 /// * [posterUrl] - Event poster image URL.
 /// * [ticketUrl] - Ticket URL when available; otherwise redirects to the event page. 
@@ -62,13 +65,25 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'content')
   String? get content;
 
-  /// Event start time in ISO8601 format.
+  /// Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
   @BuiltValueField(wireName: r'start')
   DateTime? get start;
 
-  /// Event end time in ISO8601 format.
+  /// Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations. 
+  @BuiltValueField(wireName: r'start_r001')
+  DateTime? get startR001;
+
+  /// Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
   @BuiltValueField(wireName: r'end')
   DateTime? get end;
+
+  /// Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations. 
+  @BuiltValueField(wireName: r'end_r001')
+  DateTime? get endR001;
+
+  /// IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
+  @BuiltValueField(wireName: r'timezone')
+  String? get timezone;
 
   /// `true` if the event is free, otherwise `false`. 
   @BuiltValueField(wireName: r'is_free')
@@ -201,11 +216,32 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
         specifiedType: const FullType(DateTime),
       );
     }
+    if (object.startR001 != null) {
+      yield r'start_r001';
+      yield serializers.serialize(
+        object.startR001,
+        specifiedType: const FullType(DateTime),
+      );
+    }
     if (object.end != null) {
       yield r'end';
       yield serializers.serialize(
         object.end,
         specifiedType: const FullType(DateTime),
+      );
+    }
+    if (object.endR001 != null) {
+      yield r'end_r001';
+      yield serializers.serialize(
+        object.endR001,
+        specifiedType: const FullType.nullable(DateTime),
+      );
+    }
+    if (object.timezone != null) {
+      yield r'timezone';
+      yield serializers.serialize(
+        object.timezone,
+        specifiedType: const FullType(String),
       );
     }
     if (object.isFree != null) {
@@ -392,12 +428,34 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
           ) as DateTime;
           result.start = valueDes;
           break;
+        case r'start_r001':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.startR001 = valueDes;
+          break;
         case r'end':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(DateTime),
           ) as DateTime;
           result.end = valueDes;
+          break;
+        case r'end_r001':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
+          if (valueDes == null) continue;
+          result.endR001 = valueDes;
+          break;
+        case r'timezone':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.timezone = valueDes;
           break;
         case r'is_free':
           final valueDes = serializers.deserialize(

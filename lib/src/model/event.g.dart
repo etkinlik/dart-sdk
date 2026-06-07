@@ -80,7 +80,13 @@ class _$Event extends Event {
   @override
   final DateTime? start;
   @override
+  final DateTime? startR001;
+  @override
   final DateTime? end;
+  @override
+  final DateTime? endR001;
+  @override
+  final String? timezone;
   @override
   final bool? isFree;
   @override
@@ -126,7 +132,10 @@ class _$Event extends Event {
       this.url,
       this.content,
       this.start,
+      this.startR001,
       this.end,
+      this.endR001,
+      this.timezone,
       this.isFree,
       this.posterUrl,
       this.ticketUrl,
@@ -162,7 +171,10 @@ class _$Event extends Event {
         url == other.url &&
         content == other.content &&
         start == other.start &&
+        startR001 == other.startR001 &&
         end == other.end &&
+        endR001 == other.endR001 &&
+        timezone == other.timezone &&
         isFree == other.isFree &&
         posterUrl == other.posterUrl &&
         ticketUrl == other.ticketUrl &&
@@ -191,7 +203,10 @@ class _$Event extends Event {
     _$hash = $jc(_$hash, url.hashCode);
     _$hash = $jc(_$hash, content.hashCode);
     _$hash = $jc(_$hash, start.hashCode);
+    _$hash = $jc(_$hash, startR001.hashCode);
     _$hash = $jc(_$hash, end.hashCode);
+    _$hash = $jc(_$hash, endR001.hashCode);
+    _$hash = $jc(_$hash, timezone.hashCode);
     _$hash = $jc(_$hash, isFree.hashCode);
     _$hash = $jc(_$hash, posterUrl.hashCode);
     _$hash = $jc(_$hash, ticketUrl.hashCode);
@@ -222,7 +237,10 @@ class _$Event extends Event {
           ..add('url', url)
           ..add('content', content)
           ..add('start', start)
+          ..add('startR001', startR001)
           ..add('end', end)
+          ..add('endR001', endR001)
+          ..add('timezone', timezone)
           ..add('isFree', isFree)
           ..add('posterUrl', posterUrl)
           ..add('ticketUrl', ticketUrl)
@@ -271,9 +289,21 @@ class EventBuilder implements Builder<Event, EventBuilder> {
   DateTime? get start => _$this._start;
   set start(DateTime? start) => _$this._start = start;
 
+  DateTime? _startR001;
+  DateTime? get startR001 => _$this._startR001;
+  set startR001(DateTime? startR001) => _$this._startR001 = startR001;
+
   DateTime? _end;
   DateTime? get end => _$this._end;
   set end(DateTime? end) => _$this._end = end;
+
+  DateTime? _endR001;
+  DateTime? get endR001 => _$this._endR001;
+  set endR001(DateTime? endR001) => _$this._endR001 = endR001;
+
+  String? _timezone;
+  String? get timezone => _$this._timezone;
+  set timezone(String? timezone) => _$this._timezone = timezone;
 
   bool? _isFree;
   bool? get isFree => _$this._isFree;
@@ -358,7 +388,10 @@ class EventBuilder implements Builder<Event, EventBuilder> {
       _url = $v.url;
       _content = $v.content;
       _start = $v.start;
+      _startR001 = $v.startR001;
       _end = $v.end;
+      _endR001 = $v.endR001;
+      _timezone = $v.timezone;
       _isFree = $v.isFree;
       _posterUrl = $v.posterUrl;
       _ticketUrl = $v.ticketUrl;
@@ -405,7 +438,10 @@ class EventBuilder implements Builder<Event, EventBuilder> {
             url: url,
             content: content,
             start: start,
+            startR001: startR001,
             end: end,
+            endR001: endR001,
+            timezone: timezone,
             isFree: isFree,
             posterUrl: posterUrl,
             ticketUrl: ticketUrl,

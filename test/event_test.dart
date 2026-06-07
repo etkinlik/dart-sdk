@@ -37,15 +37,33 @@ void main() {
       // TODO
     });
 
-    // Event start time in ISO8601 format.
+    // Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
     // DateTime start
     test('to test the property `start`', () async {
       // TODO
     });
 
-    // Event end time in ISO8601 format.
+    // Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations. 
+    // DateTime startR001
+    test('to test the property `startR001`', () async {
+      // TODO
+    });
+
+    // Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
     // DateTime end
     test('to test the property `end`', () async {
+      // TODO
+    });
+
+    // Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations. 
+    // DateTime endR001
+    test('to test the property `endR001`', () async {
+      // TODO
+    });
+
+    // IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
+    // String timezone
+    test('to test the property `timezone`', () async {
       // TODO
     });
 
