@@ -13,25 +13,33 @@ part 'event_impression_created.g.dart';
 /// Properties:
 /// * [success] - true when the operation succeeded.
 @BuiltValue()
-abstract class EventImpressionCreated implements Built<EventImpressionCreated, EventImpressionCreatedBuilder> {
+abstract class EventImpressionCreated
+    implements Built<EventImpressionCreated, EventImpressionCreatedBuilder> {
   /// true when the operation succeeded.
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
   EventImpressionCreated._();
 
-  factory EventImpressionCreated([void updates(EventImpressionCreatedBuilder b)]) = _$EventImpressionCreated;
+  factory EventImpressionCreated(
+          [void Function(EventImpressionCreatedBuilder b) updates]) =
+      _$EventImpressionCreated;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EventImpressionCreatedBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EventImpressionCreated> get serializer => _$EventImpressionCreatedSerializer();
+  static Serializer<EventImpressionCreated> get serializer =>
+      _$EventImpressionCreatedSerializer();
 }
 
-class _$EventImpressionCreatedSerializer implements PrimitiveSerializer<EventImpressionCreated> {
+class _$EventImpressionCreatedSerializer
+    implements PrimitiveSerializer<EventImpressionCreated> {
   @override
-  final Iterable<Type> types = const [EventImpressionCreated, _$EventImpressionCreated];
+  final Iterable<Type> types = const [
+    EventImpressionCreated,
+    _$EventImpressionCreated
+  ];
 
   @override
   final String wireName = r'EventImpressionCreated';
@@ -56,7 +64,9 @@ class _$EventImpressionCreatedSerializer implements PrimitiveSerializer<EventImp
     EventImpressionCreated object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +116,3 @@ class _$EventImpressionCreatedSerializer implements PrimitiveSerializer<EventImp
     return result.build();
   }
 }
-

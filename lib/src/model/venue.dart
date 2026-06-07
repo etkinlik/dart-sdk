@@ -20,14 +20,14 @@ part 'venue.g.dart';
 /// * [about] - About the venue.
 /// * [lat] - Latitude component of the location.
 /// * [lng] - Longitude component of the location.
-/// * [status] - 0: pending approval 1: approved 
+/// * [status] - 0: pending approval 1: approved
 /// * [phone] - Venue phone number.
 /// * [webUrl] - Venue website URL.
 /// * [facebookUrl] - Venue Facebook URL.
 /// * [twitterUrl] - Venue Twitter URL.
-/// * [city] 
-/// * [district] 
-/// * [neighborhood] 
+/// * [city]
+/// * [district]
+/// * [neighborhood]
 /// * [address] - Venue street address.
 @BuiltValue()
 abstract class Venue implements Built<Venue, VenueBuilder> {
@@ -55,7 +55,7 @@ abstract class Venue implements Built<Venue, VenueBuilder> {
   @BuiltValueField(wireName: r'lng')
   String? get lng;
 
-  /// 0: pending approval 1: approved 
+  /// 0: pending approval 1: approved
   @BuiltValueField(wireName: r'status')
   int? get status;
 
@@ -90,7 +90,7 @@ abstract class Venue implements Built<Venue, VenueBuilder> {
 
   Venue._();
 
-  factory Venue([void updates(VenueBuilder b)]) = _$Venue;
+  factory Venue([void Function(VenueBuilder b) updates]) = _$Venue;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VenueBuilder b) => b;
@@ -224,7 +224,9 @@ class _$VenueSerializer implements PrimitiveSerializer<Venue> {
     Venue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -372,4 +374,3 @@ class _$VenueSerializer implements PrimitiveSerializer<Venue> {
     return result.build();
   }
 }
-

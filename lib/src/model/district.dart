@@ -30,7 +30,7 @@ abstract class District implements Built<District, DistrictBuilder> {
 
   District._();
 
-  factory District([void updates(DistrictBuilder b)]) = _$District;
+  factory District([void Function(DistrictBuilder b) updates]) = _$District;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DistrictBuilder b) => b;
@@ -80,7 +80,9 @@ class _$DistrictSerializer implements PrimitiveSerializer<District> {
     District object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +146,3 @@ class _$DistrictSerializer implements PrimitiveSerializer<District> {
     return result.build();
   }
 }
-

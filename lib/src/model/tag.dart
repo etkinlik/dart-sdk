@@ -30,7 +30,7 @@ abstract class Tag implements Built<Tag, TagBuilder> {
 
   Tag._();
 
-  factory Tag([void updates(TagBuilder b)]) = _$Tag;
+  factory Tag([void Function(TagBuilder b) updates]) = _$Tag;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(TagBuilder b) => b;
@@ -80,7 +80,9 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
     Tag object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +146,3 @@ class _$TagSerializer implements PrimitiveSerializer<Tag> {
     return result.build();
   }
 }
-

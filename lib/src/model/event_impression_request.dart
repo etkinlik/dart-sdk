@@ -11,27 +11,35 @@ part 'event_impression_request.g.dart';
 /// EventImpressionRequest
 ///
 /// Properties:
-/// * [userAgent] - Optional. When sent, stored on the impression record. 
+/// * [userAgent] - Optional. When sent, stored on the impression record.
 @BuiltValue()
-abstract class EventImpressionRequest implements Built<EventImpressionRequest, EventImpressionRequestBuilder> {
-  /// Optional. When sent, stored on the impression record. 
+abstract class EventImpressionRequest
+    implements Built<EventImpressionRequest, EventImpressionRequestBuilder> {
+  /// Optional. When sent, stored on the impression record.
   @BuiltValueField(wireName: r'user_agent')
   String? get userAgent;
 
   EventImpressionRequest._();
 
-  factory EventImpressionRequest([void updates(EventImpressionRequestBuilder b)]) = _$EventImpressionRequest;
+  factory EventImpressionRequest(
+          [void Function(EventImpressionRequestBuilder b) updates]) =
+      _$EventImpressionRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EventImpressionRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EventImpressionRequest> get serializer => _$EventImpressionRequestSerializer();
+  static Serializer<EventImpressionRequest> get serializer =>
+      _$EventImpressionRequestSerializer();
 }
 
-class _$EventImpressionRequestSerializer implements PrimitiveSerializer<EventImpressionRequest> {
+class _$EventImpressionRequestSerializer
+    implements PrimitiveSerializer<EventImpressionRequest> {
   @override
-  final Iterable<Type> types = const [EventImpressionRequest, _$EventImpressionRequest];
+  final Iterable<Type> types = const [
+    EventImpressionRequest,
+    _$EventImpressionRequest
+  ];
 
   @override
   final String wireName = r'EventImpressionRequest';
@@ -56,7 +64,9 @@ class _$EventImpressionRequestSerializer implements PrimitiveSerializer<EventImp
     EventImpressionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +116,3 @@ class _$EventImpressionRequestSerializer implements PrimitiveSerializer<EventImp
     return result.build();
   }
 }
-

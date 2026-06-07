@@ -14,10 +14,11 @@ part 'paginated_venues.g.dart';
 /// Paginated list of venues (meta + items).
 ///
 /// Properties:
-/// * [meta] 
-/// * [items] 
+/// * [meta]
+/// * [items]
 @BuiltValue()
-abstract class PaginatedVenues implements Built<PaginatedVenues, PaginatedVenuesBuilder> {
+abstract class PaginatedVenues
+    implements Built<PaginatedVenues, PaginatedVenuesBuilder> {
   @BuiltValueField(wireName: r'meta')
   PaginationMeta? get meta;
 
@@ -26,16 +27,19 @@ abstract class PaginatedVenues implements Built<PaginatedVenues, PaginatedVenues
 
   PaginatedVenues._();
 
-  factory PaginatedVenues([void updates(PaginatedVenuesBuilder b)]) = _$PaginatedVenues;
+  factory PaginatedVenues([void Function(PaginatedVenuesBuilder b) updates]) =
+      _$PaginatedVenues;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PaginatedVenuesBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PaginatedVenues> get serializer => _$PaginatedVenuesSerializer();
+  static Serializer<PaginatedVenues> get serializer =>
+      _$PaginatedVenuesSerializer();
 }
 
-class _$PaginatedVenuesSerializer implements PrimitiveSerializer<PaginatedVenues> {
+class _$PaginatedVenuesSerializer
+    implements PrimitiveSerializer<PaginatedVenues> {
   @override
   final Iterable<Type> types = const [PaginatedVenues, _$PaginatedVenues];
 
@@ -69,7 +73,9 @@ class _$PaginatedVenuesSerializer implements PrimitiveSerializer<PaginatedVenues
     PaginatedVenues object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -126,4 +132,3 @@ class _$PaginatedVenuesSerializer implements PrimitiveSerializer<PaginatedVenues
     return result.build();
   }
 }
-

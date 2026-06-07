@@ -4,19 +4,14 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
-import 'package:etkinlik_io_api/src/model/api_general_error.dart';
-import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/neighborhood.dart';
 
 class NeighborhoodsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -24,7 +19,7 @@ class NeighborhoodsApi {
   const NeighborhoodsApi(this._dio, this._serializers);
 
   /// List neighborhoods by district
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - District ID whose neighborhoods are requested.
@@ -37,7 +32,7 @@ class NeighborhoodsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BuiltList<Neighborhood>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<Neighborhood>>> listDistrictNeighborhoods({ 
+  Future<Response<BuiltList<Neighborhood>>> listDistrictNeighborhoods({
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -46,8 +41,9 @@ class NeighborhoodsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/districts/{id}/neighborhoods'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
-    final _options = Options(
+    final path = r'/districts/{id}/neighborhoods'.replaceAll('{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final options = Options(
       method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -66,27 +62,29 @@ class NeighborhoodsApi {
       validateStatus: validateStatus,
     );
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
+    final response = await _dio.request<Object>(
+      path,
+      options: options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Neighborhood>? _responseData;
+    BuiltList<Neighborhood>? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Neighborhood)]),
-      ) as BuiltList<Neighborhood>;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(BuiltList, [FullType(Neighborhood)]),
+            ) as BuiltList<Neighborhood>;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -94,15 +92,14 @@ class NeighborhoodsApi {
     }
 
     return Response<BuiltList<Neighborhood>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
-
 }

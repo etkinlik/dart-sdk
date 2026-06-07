@@ -15,7 +15,8 @@ part 'neighborhood.g.dart';
 /// * [name] - Neighborhood name.
 /// * [slug] - Neighborhood slug.
 @BuiltValue()
-abstract class Neighborhood implements Built<Neighborhood, NeighborhoodBuilder> {
+abstract class Neighborhood
+    implements Built<Neighborhood, NeighborhoodBuilder> {
   /// Neighborhood ID.
   @BuiltValueField(wireName: r'id')
   int? get id;
@@ -30,7 +31,8 @@ abstract class Neighborhood implements Built<Neighborhood, NeighborhoodBuilder> 
 
   Neighborhood._();
 
-  factory Neighborhood([void updates(NeighborhoodBuilder b)]) = _$Neighborhood;
+  factory Neighborhood([void Function(NeighborhoodBuilder b) updates]) =
+      _$Neighborhood;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NeighborhoodBuilder b) => b;
@@ -80,7 +82,9 @@ class _$NeighborhoodSerializer implements PrimitiveSerializer<Neighborhood> {
     Neighborhood object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +148,3 @@ class _$NeighborhoodSerializer implements PrimitiveSerializer<Neighborhood> {
     return result.build();
   }
 }
-

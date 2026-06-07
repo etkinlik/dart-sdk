@@ -30,7 +30,7 @@ abstract class City implements Built<City, CityBuilder> {
 
   City._();
 
-  factory City([void updates(CityBuilder b)]) = _$City;
+  factory City([void Function(CityBuilder b) updates]) = _$City;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CityBuilder b) => b;
@@ -80,7 +80,9 @@ class _$CitySerializer implements PrimitiveSerializer<City> {
     City object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +146,3 @@ class _$CitySerializer implements PrimitiveSerializer<City> {
     return result.build();
   }
 }
-

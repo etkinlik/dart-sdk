@@ -4,19 +4,14 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
-import 'package:etkinlik_io_api/src/model/api_general_error.dart';
-import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/paginated_venues.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
 
 class VenuesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -24,7 +19,7 @@ class VenuesApi {
   const VenuesApi(this._dio, this._serializers);
 
   /// Venue detail
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - Venue ID.
@@ -37,7 +32,7 @@ class VenuesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Venue] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Venue>> getVenue({ 
+  Future<Response<Venue>> getVenue({
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -46,8 +41,9 @@ class VenuesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/venues/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
-    final _options = Options(
+    final path = r'/venues/{id}'.replaceAll('{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final options = Options(
       method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -66,27 +62,28 @@ class VenuesApi {
       validateStatus: validateStatus,
     );
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
+    final response = await _dio.request<Object>(
+      path,
+      options: options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    Venue? _responseData;
+    Venue? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Venue),
-      ) as Venue;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Venue),
+            ) as Venue;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -94,25 +91,25 @@ class VenuesApi {
     }
 
     return Response<Venue>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
 
   /// List venues
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cityIds] - Filter records by city IDs. Use comma-separated values for multiple IDs.
   /// * [districtIds] - Filter records by district IDs. Use comma-separated values for multiple IDs.
   /// * [neighborhoodIds] - Filter records by neighborhood IDs. Use comma-separated values for multiple IDs.
-  /// * [statusIds] - Use 1 for approved, 0 for pending. By default all statuses are returned. 
+  /// * [statusIds] - Use 1 for approved, 0 for pending. By default all statuses are returned.
   /// * [skip] - Offset for pagination.
   /// * [take] - Maximum number of results to return.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -124,7 +121,7 @@ class VenuesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PaginatedVenues] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PaginatedVenues>> listVenues({ 
+  Future<Response<PaginatedVenues>> listVenues({
     String? cityIds,
     String? districtIds,
     String? neighborhoodIds,
@@ -138,8 +135,8 @@ class VenuesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/venues';
-    final _options = Options(
+    final path = r'/venues';
+    final options = Options(
       method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -158,37 +155,48 @@ class VenuesApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      if (cityIds != null) r'city_ids': encodeQueryParameter(_serializers, cityIds, const FullType(String)),
-      if (districtIds != null) r'district_ids': encodeQueryParameter(_serializers, districtIds, const FullType(String)),
-      if (neighborhoodIds != null) r'neighborhood_ids': encodeQueryParameter(_serializers, neighborhoodIds, const FullType(String)),
-      if (statusIds != null) r'status_ids': encodeQueryParameter(_serializers, statusIds, const FullType(String)),
-      if (skip != null) r'skip': encodeQueryParameter(_serializers, skip, const FullType(int)),
-      if (take != null) r'take': encodeQueryParameter(_serializers, take, const FullType(int)),
+    final queryParameters = <String, dynamic>{
+      if (cityIds != null)
+        r'city_ids':
+            encodeQueryParameter(_serializers, cityIds, const FullType(String)),
+      if (districtIds != null)
+        r'district_ids': encodeQueryParameter(
+            _serializers, districtIds, const FullType(String)),
+      if (neighborhoodIds != null)
+        r'neighborhood_ids': encodeQueryParameter(
+            _serializers, neighborhoodIds, const FullType(String)),
+      if (statusIds != null)
+        r'status_ids': encodeQueryParameter(
+            _serializers, statusIds, const FullType(String)),
+      if (skip != null)
+        r'skip': encodeQueryParameter(_serializers, skip, const FullType(int)),
+      if (take != null)
+        r'take': encodeQueryParameter(_serializers, take, const FullType(int)),
     };
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
+    final response = await _dio.request<Object>(
+      path,
+      options: options,
+      queryParameters: queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    PaginatedVenues? _responseData;
+    PaginatedVenues? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PaginatedVenues),
-      ) as PaginatedVenues;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PaginatedVenues),
+            ) as PaginatedVenues;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -196,15 +204,14 @@ class VenuesApi {
     }
 
     return Response<PaginatedVenues>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
-
 }

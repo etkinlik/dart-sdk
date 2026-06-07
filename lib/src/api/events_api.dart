@@ -4,23 +4,16 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:etkinlik_io_api/src/api_util.dart';
-import 'package:etkinlik_io_api/src/model/api_authorization_error.dart';
-import 'package:etkinlik_io_api/src/model/api_deleted_error.dart';
-import 'package:etkinlik_io_api/src/model/api_duplicate_record_error.dart';
-import 'package:etkinlik_io_api/src/model/api_general_error.dart';
-import 'package:etkinlik_io_api/src/model/api_not_found_error.dart';
 import 'package:etkinlik_io_api/src/model/event.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_created.dart';
 import 'package:etkinlik_io_api/src/model/event_impression_request.dart';
 import 'package:etkinlik_io_api/src/model/paginated_events.dart';
 
 class EventsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -28,7 +21,7 @@ class EventsApi {
   const EventsApi(this._dio, this._serializers);
 
   /// Event detail
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - Event ID.
@@ -41,7 +34,7 @@ class EventsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Event] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Event>> getEvent({ 
+  Future<Response<Event>> getEvent({
     required int id,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -50,8 +43,9 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/events/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
-    final _options = Options(
+    final path = r'/events/{id}'.replaceAll('{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final options = Options(
       method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -70,27 +64,28 @@ class EventsApi {
       validateStatus: validateStatus,
     );
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
+    final response = await _dio.request<Object>(
+      path,
+      options: options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    Event? _responseData;
+    Event? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Event),
-      ) as Event;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(Event),
+            ) as Event;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -98,19 +93,19 @@ class EventsApi {
     }
 
     return Response<Event>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
 
   /// List events
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [formatIds] - Filter events by format IDs. Use comma-separated values for multiple IDs.
@@ -119,7 +114,7 @@ class EventsApi {
   /// * [cityIds] - Filter records by city IDs. Use comma-separated values for multiple IDs.
   /// * [startGte] - Filter events by start time (greater than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
   /// * [endLte] - Filter events by end time (less than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
-  /// * [sortBy] - Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently added approved events. 
+  /// * [sortBy] - Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently added approved events.
   /// * [skip] - Offset for pagination.
   /// * [take] - Maximum number of results to return.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -131,7 +126,7 @@ class EventsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [PaginatedEvents] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<PaginatedEvents>> listEvents({ 
+  Future<Response<PaginatedEvents>> listEvents({
     String? formatIds,
     String? categoryIds,
     String? venueIds,
@@ -148,8 +143,8 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/events';
-    final _options = Options(
+    final path = r'/events';
+    final options = Options(
       method: r'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -168,40 +163,57 @@ class EventsApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      if (formatIds != null) r'format_ids': encodeQueryParameter(_serializers, formatIds, const FullType(String)),
-      if (categoryIds != null) r'category_ids': encodeQueryParameter(_serializers, categoryIds, const FullType(String)),
-      if (venueIds != null) r'venue_ids': encodeQueryParameter(_serializers, venueIds, const FullType(String)),
-      if (cityIds != null) r'city_ids': encodeQueryParameter(_serializers, cityIds, const FullType(String)),
-      if (startGte != null) r'start_gte': encodeQueryParameter(_serializers, startGte, const FullType(String)),
-      if (endLte != null) r'end_lte': encodeQueryParameter(_serializers, endLte, const FullType(String)),
-      if (sortBy != null) r'sort_by': encodeQueryParameter(_serializers, sortBy, const FullType(String)),
-      if (skip != null) r'skip': encodeQueryParameter(_serializers, skip, const FullType(int)),
-      if (take != null) r'take': encodeQueryParameter(_serializers, take, const FullType(int)),
+    final queryParameters = <String, dynamic>{
+      if (formatIds != null)
+        r'format_ids': encodeQueryParameter(
+            _serializers, formatIds, const FullType(String)),
+      if (categoryIds != null)
+        r'category_ids': encodeQueryParameter(
+            _serializers, categoryIds, const FullType(String)),
+      if (venueIds != null)
+        r'venue_ids': encodeQueryParameter(
+            _serializers, venueIds, const FullType(String)),
+      if (cityIds != null)
+        r'city_ids':
+            encodeQueryParameter(_serializers, cityIds, const FullType(String)),
+      if (startGte != null)
+        r'start_gte': encodeQueryParameter(
+            _serializers, startGte, const FullType(String)),
+      if (endLte != null)
+        r'end_lte':
+            encodeQueryParameter(_serializers, endLte, const FullType(String)),
+      if (sortBy != null)
+        r'sort_by':
+            encodeQueryParameter(_serializers, sortBy, const FullType(String)),
+      if (skip != null)
+        r'skip': encodeQueryParameter(_serializers, skip, const FullType(int)),
+      if (take != null)
+        r'take': encodeQueryParameter(_serializers, take, const FullType(int)),
     };
 
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
+    final response = await _dio.request<Object>(
+      path,
+      options: options,
+      queryParameters: queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    PaginatedEvents? _responseData;
+    PaginatedEvents? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(PaginatedEvents),
-      ) as PaginatedEvents;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(PaginatedEvents),
+            ) as PaginatedEvents;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -209,23 +221,23 @@ class EventsApi {
     }
 
     return Response<PaginatedEvents>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
 
   /// Record event impression
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [id] - Event ID.
-  /// * [eventImpressionRequest] 
+  /// * [eventImpressionRequest]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -235,7 +247,7 @@ class EventsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [EventImpressionCreated] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<EventImpressionCreated>> recordEventImpression({ 
+  Future<Response<EventImpressionCreated>> recordEventImpression({
     required int id,
     EventImpressionRequest? eventImpressionRequest,
     CancelToken? cancelToken,
@@ -245,8 +257,9 @@ class EventsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/events/{id}/impressions'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(int)).toString());
-    final _options = Options(
+    final path = r'/events/{id}/impressions'.replaceAll('{' r'id' '}',
+        encodeQueryParameter(_serializers, id, const FullType(int)).toString());
+    final options = Options(
       method: r'POST',
       headers: <String, dynamic>{
         ...?headers,
@@ -266,17 +279,18 @@ class EventsApi {
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
+    dynamic bodyData;
 
     try {
-      const _type = FullType(EventImpressionRequest);
-      _bodyData = eventImpressionRequest == null ? null : _serializers.serialize(eventImpressionRequest, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      const type = FullType(EventImpressionRequest);
+      bodyData = eventImpressionRequest == null
+          ? null
+          : _serializers.serialize(eventImpressionRequest, specifiedType: type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: options.compose(
           _dio.options,
-          _path,
+          path,
         ),
         type: DioExceptionType.unknown,
         error: error,
@@ -284,28 +298,29 @@ class EventsApi {
       );
     }
 
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
+    final response = await _dio.request<Object>(
+      path,
+      data: bodyData,
+      options: options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    EventImpressionCreated? _responseData;
+    EventImpressionCreated? responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(EventImpressionCreated),
-      ) as EventImpressionCreated;
-
+      final rawResponse = response.data;
+      responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(EventImpressionCreated),
+            ) as EventImpressionCreated;
     } catch (error, stackTrace) {
       throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
+        requestOptions: response.requestOptions,
+        response: response,
         type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
@@ -313,15 +328,14 @@ class EventsApi {
     }
 
     return Response<EventImpressionCreated>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
+      data: responseData,
+      headers: response.headers,
+      isRedirect: response.isRedirect,
+      requestOptions: response.requestOptions,
+      redirects: response.redirects,
+      statusCode: response.statusCode,
+      statusMessage: response.statusMessage,
+      extra: response.extra,
     );
   }
-
 }

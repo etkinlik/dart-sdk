@@ -30,7 +30,7 @@ abstract class Category implements Built<Category, CategoryBuilder> {
 
   Category._();
 
-  factory Category([void updates(CategoryBuilder b)]) = _$Category;
+  factory Category([void Function(CategoryBuilder b) updates]) = _$Category;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CategoryBuilder b) => b;
@@ -80,7 +80,9 @@ class _$CategorySerializer implements PrimitiveSerializer<Category> {
     Category object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +146,3 @@ class _$CategorySerializer implements PrimitiveSerializer<Category> {
     return result.build();
   }
 }
-

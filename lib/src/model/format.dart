@@ -30,7 +30,7 @@ abstract class Format implements Built<Format, FormatBuilder> {
 
   Format._();
 
-  factory Format([void updates(FormatBuilder b)]) = _$Format;
+  factory Format([void Function(FormatBuilder b) updates]) = _$Format;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(FormatBuilder b) => b;
@@ -80,7 +80,9 @@ class _$FormatSerializer implements PrimitiveSerializer<Format> {
     Format object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -144,4 +146,3 @@ class _$FormatSerializer implements PrimitiveSerializer<Format> {
     return result.build();
   }
 }
-

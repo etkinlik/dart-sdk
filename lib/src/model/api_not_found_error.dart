@@ -11,10 +11,11 @@ part 'api_not_found_error.g.dart';
 /// ApiNotFoundError
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class ApiNotFoundError implements Built<ApiNotFoundError, ApiNotFoundErrorBuilder> {
+abstract class ApiNotFoundError
+    implements Built<ApiNotFoundError, ApiNotFoundErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -24,16 +25,19 @@ abstract class ApiNotFoundError implements Built<ApiNotFoundError, ApiNotFoundEr
 
   ApiNotFoundError._();
 
-  factory ApiNotFoundError([void updates(ApiNotFoundErrorBuilder b)]) = _$ApiNotFoundError;
+  factory ApiNotFoundError([void Function(ApiNotFoundErrorBuilder b) updates]) =
+      _$ApiNotFoundError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApiNotFoundErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApiNotFoundError> get serializer => _$ApiNotFoundErrorSerializer();
+  static Serializer<ApiNotFoundError> get serializer =>
+      _$ApiNotFoundErrorSerializer();
 }
 
-class _$ApiNotFoundErrorSerializer implements PrimitiveSerializer<ApiNotFoundError> {
+class _$ApiNotFoundErrorSerializer
+    implements PrimitiveSerializer<ApiNotFoundError> {
   @override
   final Iterable<Type> types = const [ApiNotFoundError, _$ApiNotFoundError];
 
@@ -67,7 +71,9 @@ class _$ApiNotFoundErrorSerializer implements PrimitiveSerializer<ApiNotFoundErr
     ApiNotFoundError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +130,3 @@ class _$ApiNotFoundErrorSerializer implements PrimitiveSerializer<ApiNotFoundErr
     return result.build();
   }
 }
-

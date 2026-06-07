@@ -40,7 +40,8 @@ abstract class VenueManual implements Built<VenueManual, VenueManualBuilder> {
 
   VenueManual._();
 
-  factory VenueManual([void updates(VenueManualBuilder b)]) = _$VenueManual;
+  factory VenueManual([void Function(VenueManualBuilder b) updates]) =
+      _$VenueManual;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VenueManualBuilder b) => b;
@@ -104,7 +105,9 @@ class _$VenueManualSerializer implements PrimitiveSerializer<VenueManual> {
     VenueManual object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -182,4 +185,3 @@ class _$VenueManualSerializer implements PrimitiveSerializer<VenueManual> {
     return result.build();
   }
 }
-

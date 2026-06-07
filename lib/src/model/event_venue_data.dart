@@ -3,10 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:etkinlik_io_api/src/model/city.dart';
 import 'package:etkinlik_io_api/src/model/venue.dart';
-import 'package:etkinlik_io_api/src/model/district.dart';
-import 'package:etkinlik_io_api/src/model/neighborhood.dart';
 import 'package:etkinlik_io_api/src/model/venue_manual.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -14,7 +11,7 @@ import 'package:one_of/one_of.dart';
 
 part 'event_venue_data.g.dart';
 
-/// Shape depends on `venue_type`. - VENUE: Venue object - ONLINE: null (no venue data) - MANUAL: VenueManual object 
+/// Shape depends on `venue_type`. - VENUE: Venue object - ONLINE: null (no venue data) - MANUAL: VenueManual object
 ///
 /// Properties:
 /// * [id] - Venue ID.
@@ -23,20 +20,21 @@ part 'event_venue_data.g.dart';
 /// * [about] - About the venue.
 /// * [lat] - Latitude component of the location.
 /// * [lng] - Longitude component of the location.
-/// * [status] - 0: pending approval 1: approved 
+/// * [status] - 0: pending approval 1: approved
 /// * [phone] - Venue phone number.
 /// * [webUrl] - Venue website URL.
 /// * [facebookUrl] - Venue Facebook URL.
 /// * [twitterUrl] - Venue Twitter URL.
-/// * [city] 
-/// * [district] 
-/// * [neighborhood] 
+/// * [city]
+/// * [district]
+/// * [neighborhood]
 /// * [address] - Venue street address.
 /// * [neighborhoodName] - Neighborhood name (text).
 /// * [districtName] - District name (text).
 /// * [cityName] - City name (text).
 @BuiltValue()
-abstract class EventVenueData implements Built<EventVenueData, EventVenueDataBuilder> {
+abstract class EventVenueData
+    implements Built<EventVenueData, EventVenueDataBuilder> {
   /// One Of [Venue], [VenueManual]
   OneOf get oneOf;
 
@@ -49,39 +47,43 @@ abstract class EventVenueData implements Built<EventVenueData, EventVenueDataBui
 
   EventVenueData._();
 
-  factory EventVenueData([void updates(EventVenueDataBuilder b)]) = _$EventVenueData;
+  factory EventVenueData([void Function(EventVenueDataBuilder b) updates]) =
+      _$EventVenueData;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EventVenueDataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EventVenueData> get serializer => _$EventVenueDataSerializer();
+  static Serializer<EventVenueData> get serializer =>
+      _$EventVenueDataSerializer();
 }
 
 extension EventVenueDataDiscriminatorExt on EventVenueData {
-    String? get discriminatorValue {
-        if (this is VenueManual) {
-            return r'MANUAL';
-        }
-        if (this is Venue) {
-            return r'VENUE';
-        }
-        return null;
+  String? get discriminatorValue {
+    if (this is VenueManual) {
+      return r'MANUAL';
     }
-}
-extension EventVenueDataBuilderDiscriminatorExt on EventVenueDataBuilder {
-    String? get discriminatorValue {
-        if (this is VenueManualBuilder) {
-            return r'MANUAL';
-        }
-        if (this is VenueBuilder) {
-            return r'VENUE';
-        }
-        return null;
+    if (this is Venue) {
+      return r'VENUE';
     }
+    return null;
+  }
 }
 
-class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> {
+extension EventVenueDataBuilderDiscriminatorExt on EventVenueDataBuilder {
+  String? get discriminatorValue {
+    if (this is VenueManualBuilder) {
+      return r'MANUAL';
+    }
+    if (this is VenueBuilder) {
+      return r'VENUE';
+    }
+    return null;
+  }
+}
+
+class _$EventVenueDataSerializer
+    implements PrimitiveSerializer<EventVenueData> {
   @override
   final Iterable<Type> types = const [EventVenueData, _$EventVenueData];
 
@@ -89,11 +91,7 @@ class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> 
   final String wireName = r'EventVenueData';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    EventVenueData object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, EventVenueData object) sync* {}
 
   @override
   Object serialize(
@@ -102,7 +100,8 @@ class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> 
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -114,10 +113,15 @@ class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> 
     final result = EventVenueDataBuilder();
     Object? oneOfDataSrc;
     final serializedList = (serialized as Iterable<Object?>).toList();
-    final discIndex = serializedList.indexOf(EventVenueData.discriminatorFieldName) + 1;
-    final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
+    final discIndex =
+        serializedList.indexOf(EventVenueData.discriminatorFieldName) + 1;
+    final discValue = serializers.deserialize(serializedList[discIndex],
+        specifiedType: FullType(String)) as String;
     oneOfDataSrc = serialized;
-    final oneOfTypes = [VenueManual, Venue, ];
+    final oneOfTypes = [
+      VenueManual,
+      Venue,
+    ];
     Object oneOfResult;
     Type oneOfType;
     switch (discValue) {
@@ -136,10 +140,13 @@ class _$EventVenueDataSerializer implements PrimitiveSerializer<EventVenueData> 
         oneOfType = Venue;
         break;
       default:
-        throw UnsupportedError("Couldn't deserialize oneOf for the discriminator value: ${discValue}");
+        throw UnsupportedError(
+            "Couldn't deserialize oneOf for the discriminator value: $discValue");
     }
-    result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
+    result.oneOf = OneOfDynamic(
+        typeIndex: oneOfTypes.indexOf(oneOfType),
+        types: oneOfTypes,
+        value: oneOfResult);
     return result.build();
   }
 }
-

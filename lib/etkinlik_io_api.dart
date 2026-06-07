@@ -38,4 +38,3 @@ export 'package:etkinlik_io_api/src/model/pagination_meta.dart';
 export 'package:etkinlik_io_api/src/model/tag.dart';
 export 'package:etkinlik_io_api/src/model/venue.dart';
 export 'package:etkinlik_io_api/src/model/venue_manual.dart';
-

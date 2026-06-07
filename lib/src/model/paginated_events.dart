@@ -14,10 +14,11 @@ part 'paginated_events.g.dart';
 /// Paginated list of events (meta + items).
 ///
 /// Properties:
-/// * [meta] 
-/// * [items] 
+/// * [meta]
+/// * [items]
 @BuiltValue()
-abstract class PaginatedEvents implements Built<PaginatedEvents, PaginatedEventsBuilder> {
+abstract class PaginatedEvents
+    implements Built<PaginatedEvents, PaginatedEventsBuilder> {
   @BuiltValueField(wireName: r'meta')
   PaginationMeta? get meta;
 
@@ -26,16 +27,19 @@ abstract class PaginatedEvents implements Built<PaginatedEvents, PaginatedEvents
 
   PaginatedEvents._();
 
-  factory PaginatedEvents([void updates(PaginatedEventsBuilder b)]) = _$PaginatedEvents;
+  factory PaginatedEvents([void Function(PaginatedEventsBuilder b) updates]) =
+      _$PaginatedEvents;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PaginatedEventsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PaginatedEvents> get serializer => _$PaginatedEventsSerializer();
+  static Serializer<PaginatedEvents> get serializer =>
+      _$PaginatedEventsSerializer();
 }
 
-class _$PaginatedEventsSerializer implements PrimitiveSerializer<PaginatedEvents> {
+class _$PaginatedEventsSerializer
+    implements PrimitiveSerializer<PaginatedEvents> {
   @override
   final Iterable<Type> types = const [PaginatedEvents, _$PaginatedEvents];
 
@@ -69,7 +73,9 @@ class _$PaginatedEventsSerializer implements PrimitiveSerializer<PaginatedEvents
     PaginatedEvents object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -126,4 +132,3 @@ class _$PaginatedEventsSerializer implements PrimitiveSerializer<PaginatedEvents
     return result.build();
   }
 }
-

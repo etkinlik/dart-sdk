@@ -11,10 +11,11 @@ part 'api_deleted_error.g.dart';
 /// ApiDeletedError
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class ApiDeletedError implements Built<ApiDeletedError, ApiDeletedErrorBuilder> {
+abstract class ApiDeletedError
+    implements Built<ApiDeletedError, ApiDeletedErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -24,16 +25,19 @@ abstract class ApiDeletedError implements Built<ApiDeletedError, ApiDeletedError
 
   ApiDeletedError._();
 
-  factory ApiDeletedError([void updates(ApiDeletedErrorBuilder b)]) = _$ApiDeletedError;
+  factory ApiDeletedError([void Function(ApiDeletedErrorBuilder b) updates]) =
+      _$ApiDeletedError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApiDeletedErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApiDeletedError> get serializer => _$ApiDeletedErrorSerializer();
+  static Serializer<ApiDeletedError> get serializer =>
+      _$ApiDeletedErrorSerializer();
 }
 
-class _$ApiDeletedErrorSerializer implements PrimitiveSerializer<ApiDeletedError> {
+class _$ApiDeletedErrorSerializer
+    implements PrimitiveSerializer<ApiDeletedError> {
   @override
   final Iterable<Type> types = const [ApiDeletedError, _$ApiDeletedError];
 
@@ -67,7 +71,9 @@ class _$ApiDeletedErrorSerializer implements PrimitiveSerializer<ApiDeletedError
     ApiDeletedError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +130,3 @@ class _$ApiDeletedErrorSerializer implements PrimitiveSerializer<ApiDeletedError
     return result.build();
   }
 }
-

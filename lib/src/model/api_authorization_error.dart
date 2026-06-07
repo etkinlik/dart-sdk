@@ -11,10 +11,11 @@ part 'api_authorization_error.g.dart';
 /// ApiAuthorizationError
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class ApiAuthorizationError implements Built<ApiAuthorizationError, ApiAuthorizationErrorBuilder> {
+abstract class ApiAuthorizationError
+    implements Built<ApiAuthorizationError, ApiAuthorizationErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -24,18 +25,25 @@ abstract class ApiAuthorizationError implements Built<ApiAuthorizationError, Api
 
   ApiAuthorizationError._();
 
-  factory ApiAuthorizationError([void updates(ApiAuthorizationErrorBuilder b)]) = _$ApiAuthorizationError;
+  factory ApiAuthorizationError(
+          [void Function(ApiAuthorizationErrorBuilder b) updates]) =
+      _$ApiAuthorizationError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApiAuthorizationErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApiAuthorizationError> get serializer => _$ApiAuthorizationErrorSerializer();
+  static Serializer<ApiAuthorizationError> get serializer =>
+      _$ApiAuthorizationErrorSerializer();
 }
 
-class _$ApiAuthorizationErrorSerializer implements PrimitiveSerializer<ApiAuthorizationError> {
+class _$ApiAuthorizationErrorSerializer
+    implements PrimitiveSerializer<ApiAuthorizationError> {
   @override
-  final Iterable<Type> types = const [ApiAuthorizationError, _$ApiAuthorizationError];
+  final Iterable<Type> types = const [
+    ApiAuthorizationError,
+    _$ApiAuthorizationError
+  ];
 
   @override
   final String wireName = r'ApiAuthorizationError';
@@ -67,7 +75,9 @@ class _$ApiAuthorizationErrorSerializer implements PrimitiveSerializer<ApiAuthor
     ApiAuthorizationError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +134,3 @@ class _$ApiAuthorizationErrorSerializer implements PrimitiveSerializer<ApiAuthor
     return result.build();
   }
 }
-

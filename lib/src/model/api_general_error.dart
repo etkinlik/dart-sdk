@@ -11,10 +11,11 @@ part 'api_general_error.g.dart';
 /// ApiGeneralError
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 /// * [message] - Error message (Turkish in API responses).
 @BuiltValue()
-abstract class ApiGeneralError implements Built<ApiGeneralError, ApiGeneralErrorBuilder> {
+abstract class ApiGeneralError
+    implements Built<ApiGeneralError, ApiGeneralErrorBuilder> {
   @BuiltValueField(wireName: r'success')
   bool? get success;
 
@@ -24,16 +25,19 @@ abstract class ApiGeneralError implements Built<ApiGeneralError, ApiGeneralError
 
   ApiGeneralError._();
 
-  factory ApiGeneralError([void updates(ApiGeneralErrorBuilder b)]) = _$ApiGeneralError;
+  factory ApiGeneralError([void Function(ApiGeneralErrorBuilder b) updates]) =
+      _$ApiGeneralError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ApiGeneralErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ApiGeneralError> get serializer => _$ApiGeneralErrorSerializer();
+  static Serializer<ApiGeneralError> get serializer =>
+      _$ApiGeneralErrorSerializer();
 }
 
-class _$ApiGeneralErrorSerializer implements PrimitiveSerializer<ApiGeneralError> {
+class _$ApiGeneralErrorSerializer
+    implements PrimitiveSerializer<ApiGeneralError> {
   @override
   final Iterable<Type> types = const [ApiGeneralError, _$ApiGeneralError];
 
@@ -67,7 +71,9 @@ class _$ApiGeneralErrorSerializer implements PrimitiveSerializer<ApiGeneralError
     ApiGeneralError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -124,4 +130,3 @@ class _$ApiGeneralErrorSerializer implements PrimitiveSerializer<ApiGeneralError
     return result.build();
   }
 }
-

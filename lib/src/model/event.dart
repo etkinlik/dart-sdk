@@ -20,15 +20,15 @@ part 'event.g.dart';
 /// * [name] - Event name.
 /// * [slug] - Event slug.
 /// * [url] - Event URL on Etkinlik.io.
-/// * [content] - Event HTML content with detailed information. 
-/// * [start] - Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
-/// * [startR001] - Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations. 
-/// * [end] - Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
-/// * [endR001] - Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations. 
-/// * [timezone] - IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
-/// * [isFree] - `true` if the event is free, otherwise `false`. 
+/// * [content] - Event HTML content with detailed information.
+/// * [start] - Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field.
+/// * [startR001] - Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations.
+/// * [end] - Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours.
+/// * [endR001] - Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.
+/// * [timezone] - IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.
+/// * [isFree] - `true` if the event is free, otherwise `false`.
 /// * [posterUrl] - Event poster image URL.
-/// * [ticketUrl] - Ticket URL when available; otherwise redirects to the event page. 
+/// * [ticketUrl] - Ticket URL when available; otherwise redirects to the event page.
 /// * [phone] - Contact phone for the event.
 /// * [email] - Contact email for the event.
 /// * [facebookUrl] - Facebook profile or page for the event.
@@ -38,10 +38,10 @@ part 'event.g.dart';
 /// * [liveUrl] - Live stream URL for the event.
 /// * [androidUrl] - Android app URL for the event.
 /// * [iosUrl] - iOS app URL for the event.
-/// * [format] 
-/// * [category] 
-/// * [venueType] - Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
-/// * [venueData] 
+/// * [format]
+/// * [category]
+/// * [venueType] - Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
+/// * [venueData]
 /// * [tags] - Tags associated with the event.
 @BuiltValue()
 abstract class Event implements Built<Event, EventBuilder> {
@@ -61,31 +61,31 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'url')
   String? get url;
 
-  /// Event HTML content with detailed information. 
+  /// Event HTML content with detailed information.
   @BuiltValueField(wireName: r'content')
   String? get content;
 
-  /// Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field. 
+  /// Legacy field. Event start in ISO8601 with offset for the event's `timezone` (wall-clock presentation). Existing integrations may keep using this field.
   @BuiltValueField(wireName: r'start')
   DateTime? get start;
 
-  /// Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations. 
+  /// Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations.
   @BuiltValueField(wireName: r'start_r001')
   DateTime? get startR001;
 
-  /// Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. 
+  /// Legacy field. Event end in ISO8601 with offset for the event's `timezone`. Always present for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours.
   @BuiltValueField(wireName: r'end')
   DateTime? get end;
 
-  /// Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations. 
+  /// Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.
   @BuiltValueField(wireName: r'end_r001')
   DateTime? get endR001;
 
-  /// IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
+  /// IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.
   @BuiltValueField(wireName: r'timezone')
   String? get timezone;
 
-  /// `true` if the event is free, otherwise `false`. 
+  /// `true` if the event is free, otherwise `false`.
   @BuiltValueField(wireName: r'is_free')
   bool? get isFree;
 
@@ -93,7 +93,7 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'poster_url')
   String? get posterUrl;
 
-  /// Ticket URL when available; otherwise redirects to the event page. 
+  /// Ticket URL when available; otherwise redirects to the event page.
   @BuiltValueField(wireName: r'ticket_url')
   String? get ticketUrl;
 
@@ -139,7 +139,7 @@ abstract class Event implements Built<Event, EventBuilder> {
   @BuiltValueField(wireName: r'category')
   Category? get category;
 
-  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
+  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
   @BuiltValueField(wireName: r'venue_type')
   EventVenueTypeEnum? get venueType;
   // enum venueTypeEnum {  VENUE,  ONLINE,  MANUAL,  };
@@ -153,7 +153,7 @@ abstract class Event implements Built<Event, EventBuilder> {
 
   Event._();
 
-  factory Event([void updates(EventBuilder b)]) = _$Event;
+  factory Event([void Function(EventBuilder b) updates]) = _$Event;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EventBuilder b) => b;
@@ -371,7 +371,9 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
     Event object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -607,22 +609,24 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
 }
 
 class EventVenueTypeEnum extends EnumClass {
-
-  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
+  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
   @BuiltValueEnumConst(wireName: r'VENUE')
   static const EventVenueTypeEnum venue = _$eventVenueTypeEnum_venue;
-  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
+
+  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
   @BuiltValueEnumConst(wireName: r'ONLINE')
   static const EventVenueTypeEnum online = _$eventVenueTypeEnum_online;
-  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object) 
+
+  /// Venue type. - VENUE: Registered venue (`venue_data` is a Venue object) - ONLINE: Online event (`venue_data` is null) - MANUAL: Manually entered venue (`venue_data` is a VenueManual object)
   @BuiltValueEnumConst(wireName: r'MANUAL')
   static const EventVenueTypeEnum manual = _$eventVenueTypeEnum_manual;
 
-  static Serializer<EventVenueTypeEnum> get serializer => _$eventVenueTypeEnumSerializer;
+  static Serializer<EventVenueTypeEnum> get serializer =>
+      _$eventVenueTypeEnumSerializer;
 
-  const EventVenueTypeEnum._(String name): super(name);
+  const EventVenueTypeEnum._(super.name);
 
   static BuiltSet<EventVenueTypeEnum> get values => _$eventVenueTypeEnumValues;
-  static EventVenueTypeEnum valueOf(String name) => _$eventVenueTypeEnumValueOf(name);
+  static EventVenueTypeEnum valueOf(String name) =>
+      _$eventVenueTypeEnumValueOf(name);
 }
-

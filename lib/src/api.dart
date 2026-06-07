@@ -28,8 +28,8 @@ class EtkinlikIoApi {
     Serializers? serializers,
     String? basePathOverride,
     List<Interceptor>? interceptors,
-  })  : this.serializers = serializers ?? standardSerializers,
-        this.dio = dio ??
+  })  : serializers = serializers ?? standardSerializers,
+        dio = dio ??
             Dio(BaseOptions(
               baseUrl: basePathOverride ?? basePath,
               connectTimeout: const Duration(milliseconds: 5000),
@@ -48,8 +48,10 @@ class EtkinlikIoApi {
   }
 
   void setOAuthToken(String name, String token) {
-    if (this.dio.interceptors.any((i) => i is OAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is OAuthInterceptor) as OAuthInterceptor).tokens[name] = token;
+    if (dio.interceptors.any((i) => i is OAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is OAuthInterceptor)
+              as OAuthInterceptor)
+          .tokens[name] = token;
     }
   }
 
@@ -58,14 +60,19 @@ class EtkinlikIoApi {
   /// If no [OAuthInterceptor] is registered or no token exists for the given
   /// [name], this method has no effect.
   void removeOAuthToken(String name) {
-    if (this.dio.interceptors.any((i) => i is OAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is OAuthInterceptor) as OAuthInterceptor).tokens.remove(name);
+    if (dio.interceptors.any((i) => i is OAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is OAuthInterceptor)
+              as OAuthInterceptor)
+          .tokens
+          .remove(name);
     }
   }
 
   void setBearerAuth(String name, String token) {
-    if (this.dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor) as BearerAuthInterceptor).tokens[name] = token;
+    if (dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor)
+              as BearerAuthInterceptor)
+          .tokens[name] = token;
     }
   }
 
@@ -74,14 +81,19 @@ class EtkinlikIoApi {
   /// If no [BearerAuthInterceptor] is registered or no token exists for the
   /// given [name], this method has no effect.
   void removeBearerAuth(String name) {
-    if (this.dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor) as BearerAuthInterceptor).tokens.remove(name);
+    if (dio.interceptors.any((i) => i is BearerAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is BearerAuthInterceptor)
+              as BearerAuthInterceptor)
+          .tokens
+          .remove(name);
     }
   }
 
   void setBasicAuth(String name, String username, String password) {
-    if (this.dio.interceptors.any((i) => i is BasicAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is BasicAuthInterceptor) as BasicAuthInterceptor).authInfo[name] = BasicAuthInfo(username, password);
+    if (dio.interceptors.any((i) => i is BasicAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is BasicAuthInterceptor)
+              as BasicAuthInterceptor)
+          .authInfo[name] = BasicAuthInfo(username, password);
     }
   }
 
@@ -90,14 +102,20 @@ class EtkinlikIoApi {
   /// If no [BasicAuthInterceptor] is registered or no credentials exist for the
   /// given [name], this method has no effect.
   void removeBasicAuth(String name) {
-    if (this.dio.interceptors.any((i) => i is BasicAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((i) => i is BasicAuthInterceptor) as BasicAuthInterceptor).authInfo.remove(name);
+    if (dio.interceptors.any((i) => i is BasicAuthInterceptor)) {
+      (dio.interceptors.firstWhere((i) => i is BasicAuthInterceptor)
+              as BasicAuthInterceptor)
+          .authInfo
+          .remove(name);
     }
   }
 
   void setApiKey(String name, String apiKey) {
-    if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys[name] = apiKey;
+    if (dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
+      (dio.interceptors
+                  .firstWhere((element) => element is ApiKeyAuthInterceptor)
+              as ApiKeyAuthInterceptor)
+          .apiKeys[name] = apiKey;
     }
   }
 
@@ -106,8 +124,12 @@ class EtkinlikIoApi {
   /// If no [ApiKeyAuthInterceptor] is registered or no API key exists for the
   /// given [name], this method has no effect.
   void removeApiKey(String name) {
-    if (this.dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
-      (this.dio.interceptors.firstWhere((element) => element is ApiKeyAuthInterceptor) as ApiKeyAuthInterceptor).apiKeys.remove(name);
+    if (dio.interceptors.any((i) => i is ApiKeyAuthInterceptor)) {
+      (dio.interceptors
+                  .firstWhere((element) => element is ApiKeyAuthInterceptor)
+              as ApiKeyAuthInterceptor)
+          .apiKeys
+          .remove(name);
     }
   }
 

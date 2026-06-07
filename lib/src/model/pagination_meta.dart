@@ -13,23 +13,27 @@ part 'pagination_meta.g.dart';
 /// Properties:
 /// * [totalCount] - Total number of matching records.
 @BuiltValue()
-abstract class PaginationMeta implements Built<PaginationMeta, PaginationMetaBuilder> {
+abstract class PaginationMeta
+    implements Built<PaginationMeta, PaginationMetaBuilder> {
   /// Total number of matching records.
   @BuiltValueField(wireName: r'total_count')
   int? get totalCount;
 
   PaginationMeta._();
 
-  factory PaginationMeta([void updates(PaginationMetaBuilder b)]) = _$PaginationMeta;
+  factory PaginationMeta([void Function(PaginationMetaBuilder b) updates]) =
+      _$PaginationMeta;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PaginationMetaBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PaginationMeta> get serializer => _$PaginationMetaSerializer();
+  static Serializer<PaginationMeta> get serializer =>
+      _$PaginationMetaSerializer();
 }
 
-class _$PaginationMetaSerializer implements PrimitiveSerializer<PaginationMeta> {
+class _$PaginationMetaSerializer
+    implements PrimitiveSerializer<PaginationMeta> {
   @override
   final Iterable<Type> types = const [PaginationMeta, _$PaginationMeta];
 
@@ -56,7 +60,9 @@ class _$PaginationMetaSerializer implements PrimitiveSerializer<PaginationMeta> 
     PaginationMeta object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$PaginationMetaSerializer implements PrimitiveSerializer<PaginationMeta> 
     return result.build();
   }
 }
-
