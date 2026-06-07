@@ -1,3 +1,8 @@
+## 2.0.10
+
+- Regenerated from OpenAPI 2.0.10; published via GitHub Actions OIDC under publisher `etkinlik.io`.
+- OpenAPI schemas: `required` arrays added for response models. SDK types reflect non-optional core fields; nullable fields stay optional.
+
 ## 2.0.9
 
 - Regenerated from OpenAPI 2.0.9; published via GitHub Actions OIDC under publisher `etkinlik.io`.

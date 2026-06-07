@@ -17,11 +17,11 @@ part 'api_deleted_error.g.dart';
 abstract class ApiDeletedError
     implements Built<ApiDeletedError, ApiDeletedErrorBuilder> {
   @BuiltValueField(wireName: r'success')
-  bool? get success;
+  bool get success;
 
   /// Error message (Turkish in API responses).
   @BuiltValueField(wireName: r'message')
-  String? get message;
+  String get message;
 
   ApiDeletedError._();
 
@@ -49,20 +49,16 @@ class _$ApiDeletedErrorSerializer
     ApiDeletedError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.success != null) {
-      yield r'success';
-      yield serializers.serialize(
-        object.success,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'success';
+    yield serializers.serialize(
+      object.success,
+      specifiedType: const FullType(bool),
+    );
+    yield r'message';
+    yield serializers.serialize(
+      object.message,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

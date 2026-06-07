@@ -8,16 +8,17 @@ part of 'tag.dart';
 
 class _$Tag extends Tag {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$Tag([void Function(TagBuilder)? updates]) =>
       (TagBuilder()..update(updates))._build();
 
-  _$Tag._({this.id, this.name, this.slug}) : super._();
+  _$Tag._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   Tag rebuild(void Function(TagBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -100,9 +101,9 @@ class TagBuilder implements Builder<Tag, TagBuilder> {
   _$Tag _build() {
     final _$result = _$v ??
         _$Tag._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'Tag', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name, r'Tag', 'name'),
+          slug: BuiltValueNullFieldError.checkNotNull(slug, r'Tag', 'slug'),
         );
     replace(_$result);
     return _$result;

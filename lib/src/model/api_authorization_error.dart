@@ -17,11 +17,11 @@ part 'api_authorization_error.g.dart';
 abstract class ApiAuthorizationError
     implements Built<ApiAuthorizationError, ApiAuthorizationErrorBuilder> {
   @BuiltValueField(wireName: r'success')
-  bool? get success;
+  bool get success;
 
   /// Error message (Turkish in API responses).
   @BuiltValueField(wireName: r'message')
-  String? get message;
+  String get message;
 
   ApiAuthorizationError._();
 
@@ -53,20 +53,16 @@ class _$ApiAuthorizationErrorSerializer
     ApiAuthorizationError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.success != null) {
-      yield r'success';
-      yield serializers.serialize(
-        object.success,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'success';
+    yield serializers.serialize(
+      object.success,
+      specifiedType: const FullType(bool),
+    );
+    yield r'message';
+    yield serializers.serialize(
+      object.message,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

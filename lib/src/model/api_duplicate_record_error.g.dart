@@ -8,22 +8,26 @@ part of 'api_duplicate_record_error.dart';
 
 class _$ApiDuplicateRecordError extends ApiDuplicateRecordError {
   @override
-  final bool? success;
+  final bool success;
   @override
-  final String? message;
+  final String message;
   @override
-  final int? newId;
+  final int newId;
   @override
-  final String? newName;
+  final String newName;
   @override
-  final String? newSlug;
+  final String newSlug;
 
   factory _$ApiDuplicateRecordError(
           [void Function(ApiDuplicateRecordErrorBuilder)? updates]) =>
       (ApiDuplicateRecordErrorBuilder()..update(updates))._build();
 
   _$ApiDuplicateRecordError._(
-      {this.success, this.message, this.newId, this.newName, this.newSlug})
+      {required this.success,
+      required this.message,
+      required this.newId,
+      required this.newName,
+      required this.newSlug})
       : super._();
   @override
   ApiDuplicateRecordError rebuild(
@@ -127,11 +131,16 @@ class ApiDuplicateRecordErrorBuilder
   _$ApiDuplicateRecordError _build() {
     final _$result = _$v ??
         _$ApiDuplicateRecordError._(
-          success: success,
-          message: message,
-          newId: newId,
-          newName: newName,
-          newSlug: newSlug,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'ApiDuplicateRecordError', 'success'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ApiDuplicateRecordError', 'message'),
+          newId: BuiltValueNullFieldError.checkNotNull(
+              newId, r'ApiDuplicateRecordError', 'newId'),
+          newName: BuiltValueNullFieldError.checkNotNull(
+              newName, r'ApiDuplicateRecordError', 'newName'),
+          newSlug: BuiltValueNullFieldError.checkNotNull(
+              newSlug, r'ApiDuplicateRecordError', 'newSlug'),
         );
     replace(_$result);
     return _$result;

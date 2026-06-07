@@ -8,12 +8,12 @@ part of 'pagination_meta.dart';
 
 class _$PaginationMeta extends PaginationMeta {
   @override
-  final int? totalCount;
+  final int totalCount;
 
   factory _$PaginationMeta([void Function(PaginationMetaBuilder)? updates]) =>
       (PaginationMetaBuilder()..update(updates))._build();
 
-  _$PaginationMeta._({this.totalCount}) : super._();
+  _$PaginationMeta._({required this.totalCount}) : super._();
   @override
   PaginationMeta rebuild(void Function(PaginationMetaBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -80,7 +80,8 @@ class PaginationMetaBuilder
   _$PaginationMeta _build() {
     final _$result = _$v ??
         _$PaginationMeta._(
-          totalCount: totalCount,
+          totalCount: BuiltValueNullFieldError.checkNotNull(
+              totalCount, r'PaginationMeta', 'totalCount'),
         );
     replace(_$result);
     return _$result;

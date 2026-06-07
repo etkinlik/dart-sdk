@@ -8,19 +8,19 @@ part of 'venue.dart';
 
 class _$Venue extends Venue {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
   @override
-  final String? about;
+  final String about;
   @override
-  final String? lat;
+  final String lat;
   @override
-  final String? lng;
+  final String lng;
   @override
-  final int? status;
+  final int status;
   @override
   final String? phone;
   @override
@@ -30,33 +30,33 @@ class _$Venue extends Venue {
   @override
   final String? twitterUrl;
   @override
-  final City? city;
+  final City city;
   @override
-  final District? district;
+  final District district;
   @override
   final Neighborhood? neighborhood;
   @override
-  final String? address;
+  final String address;
 
   factory _$Venue([void Function(VenueBuilder)? updates]) =>
       (VenueBuilder()..update(updates))._build();
 
   _$Venue._(
-      {this.id,
-      this.name,
-      this.slug,
-      this.about,
-      this.lat,
-      this.lng,
-      this.status,
+      {required this.id,
+      required this.name,
+      required this.slug,
+      required this.about,
+      required this.lat,
+      required this.lng,
+      required this.status,
       this.phone,
       this.webUrl,
       this.facebookUrl,
       this.twitterUrl,
-      this.city,
-      this.district,
+      required this.city,
+      required this.district,
       this.neighborhood,
-      this.address})
+      required this.address})
       : super._();
   @override
   Venue rebuild(void Function(VenueBuilder) updates) =>
@@ -213,8 +213,8 @@ class VenueBuilder implements Builder<Venue, VenueBuilder> {
       _webUrl = $v.webUrl;
       _facebookUrl = $v.facebookUrl;
       _twitterUrl = $v.twitterUrl;
-      _city = $v.city?.toBuilder();
-      _district = $v.district?.toBuilder();
+      _city = $v.city.toBuilder();
+      _district = $v.district.toBuilder();
       _neighborhood = $v.neighborhood?.toBuilder();
       _address = $v.address;
       _$v = null;
@@ -240,29 +240,32 @@ class VenueBuilder implements Builder<Venue, VenueBuilder> {
     try {
       _$result = _$v ??
           _$Venue._(
-            id: id,
-            name: name,
-            slug: slug,
-            about: about,
-            lat: lat,
-            lng: lng,
-            status: status,
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Venue', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Venue', 'name'),
+            slug: BuiltValueNullFieldError.checkNotNull(slug, r'Venue', 'slug'),
+            about:
+                BuiltValueNullFieldError.checkNotNull(about, r'Venue', 'about'),
+            lat: BuiltValueNullFieldError.checkNotNull(lat, r'Venue', 'lat'),
+            lng: BuiltValueNullFieldError.checkNotNull(lng, r'Venue', 'lng'),
+            status: BuiltValueNullFieldError.checkNotNull(
+                status, r'Venue', 'status'),
             phone: phone,
             webUrl: webUrl,
             facebookUrl: facebookUrl,
             twitterUrl: twitterUrl,
-            city: _city?.build(),
-            district: _district?.build(),
+            city: city.build(),
+            district: district.build(),
             neighborhood: _neighborhood?.build(),
-            address: address,
+            address: BuiltValueNullFieldError.checkNotNull(
+                address, r'Venue', 'address'),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'city';
-        _city?.build();
+        city.build();
         _$failedField = 'district';
-        _district?.build();
+        district.build();
         _$failedField = 'neighborhood';
         _neighborhood?.build();
       } catch (e) {

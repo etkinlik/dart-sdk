@@ -8,16 +8,17 @@ part of 'category.dart';
 
 class _$Category extends Category {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$Category([void Function(CategoryBuilder)? updates]) =>
       (CategoryBuilder()..update(updates))._build();
 
-  _$Category._({this.id, this.name, this.slug}) : super._();
+  _$Category._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   Category rebuild(void Function(CategoryBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -100,9 +101,11 @@ class CategoryBuilder implements Builder<Category, CategoryBuilder> {
   _$Category _build() {
     final _$result = _$v ??
         _$Category._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'Category', 'id'),
+          name:
+              BuiltValueNullFieldError.checkNotNull(name, r'Category', 'name'),
+          slug:
+              BuiltValueNullFieldError.checkNotNull(slug, r'Category', 'slug'),
         );
     replace(_$result);
     return _$result;

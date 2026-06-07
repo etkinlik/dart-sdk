@@ -20,23 +20,23 @@ part 'api_duplicate_record_error.g.dart';
 abstract class ApiDuplicateRecordError
     implements Built<ApiDuplicateRecordError, ApiDuplicateRecordErrorBuilder> {
   @BuiltValueField(wireName: r'success')
-  bool? get success;
+  bool get success;
 
   /// Error message (Turkish in API responses).
   @BuiltValueField(wireName: r'message')
-  String? get message;
+  String get message;
 
   /// ID of the canonical (non-duplicate) record.
   @BuiltValueField(wireName: r'new_id')
-  int? get newId;
+  int get newId;
 
   /// Name of the canonical record.
   @BuiltValueField(wireName: r'new_name')
-  String? get newName;
+  String get newName;
 
   /// Slug of the canonical record.
   @BuiltValueField(wireName: r'new_slug')
-  String? get newSlug;
+  String get newSlug;
 
   ApiDuplicateRecordError._();
 
@@ -68,41 +68,31 @@ class _$ApiDuplicateRecordErrorSerializer
     ApiDuplicateRecordError object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.success != null) {
-      yield r'success';
-      yield serializers.serialize(
-        object.success,
-        specifiedType: const FullType(bool),
-      );
-    }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.newId != null) {
-      yield r'new_id';
-      yield serializers.serialize(
-        object.newId,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.newName != null) {
-      yield r'new_name';
-      yield serializers.serialize(
-        object.newName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.newSlug != null) {
-      yield r'new_slug';
-      yield serializers.serialize(
-        object.newSlug,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'success';
+    yield serializers.serialize(
+      object.success,
+      specifiedType: const FullType(bool),
+    );
+    yield r'message';
+    yield serializers.serialize(
+      object.message,
+      specifiedType: const FullType(String),
+    );
+    yield r'new_id';
+    yield serializers.serialize(
+      object.newId,
+      specifiedType: const FullType(int),
+    );
+    yield r'new_name';
+    yield serializers.serialize(
+      object.newName,
+      specifiedType: const FullType(String),
+    );
+    yield r'new_slug';
+    yield serializers.serialize(
+      object.newSlug,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

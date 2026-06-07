@@ -21,72 +21,73 @@ part 'venue.g.dart';
 /// * [lat] - Latitude component of the location.
 /// * [lng] - Longitude component of the location.
 /// * [status] - 0: pending approval 1: approved
-/// * [phone] - Venue phone number.
-/// * [webUrl] - Venue website URL.
-/// * [facebookUrl] - Venue Facebook URL.
-/// * [twitterUrl] - Venue Twitter URL.
+/// * [phone] - Venue phone number; null when not set.
+/// * [webUrl] - Venue website URL; null when not set.
+/// * [facebookUrl] - Venue Facebook URL; null when not set.
+/// * [twitterUrl] - Venue Twitter URL; null when not set.
 /// * [city]
 /// * [district]
-/// * [neighborhood]
+/// * [neighborhood] - Neighborhood; null when not linked to a registered neighborhood.
 /// * [address] - Venue street address.
 @BuiltValue()
 abstract class Venue implements Built<Venue, VenueBuilder> {
   /// Venue ID.
   @BuiltValueField(wireName: r'id')
-  int? get id;
+  int get id;
 
   /// Venue name.
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   /// Venue slug.
   @BuiltValueField(wireName: r'slug')
-  String? get slug;
+  String get slug;
 
   /// About the venue.
   @BuiltValueField(wireName: r'about')
-  String? get about;
+  String get about;
 
   /// Latitude component of the location.
   @BuiltValueField(wireName: r'lat')
-  String? get lat;
+  String get lat;
 
   /// Longitude component of the location.
   @BuiltValueField(wireName: r'lng')
-  String? get lng;
+  String get lng;
 
   /// 0: pending approval 1: approved
   @BuiltValueField(wireName: r'status')
-  int? get status;
+  int get status;
 
-  /// Venue phone number.
+  /// Venue phone number; null when not set.
   @BuiltValueField(wireName: r'phone')
   String? get phone;
 
-  /// Venue website URL.
+  /// Venue website URL; null when not set.
   @BuiltValueField(wireName: r'web_url')
   String? get webUrl;
 
-  /// Venue Facebook URL.
+  /// Venue Facebook URL; null when not set.
   @BuiltValueField(wireName: r'facebook_url')
   String? get facebookUrl;
 
-  /// Venue Twitter URL.
+  /// Venue Twitter URL; null when not set.
   @BuiltValueField(wireName: r'twitter_url')
   String? get twitterUrl;
 
   @BuiltValueField(wireName: r'city')
-  City? get city;
+  City get city;
 
   @BuiltValueField(wireName: r'district')
-  District? get district;
+  District get district;
 
+  /// Neighborhood; null when not linked to a registered neighborhood.
   @BuiltValueField(wireName: r'neighborhood')
   Neighborhood? get neighborhood;
 
   /// Venue street address.
   @BuiltValueField(wireName: r'address')
-  String? get address;
+  String get address;
 
   Venue._();
 
@@ -111,111 +112,91 @@ class _$VenueSerializer implements PrimitiveSerializer<Venue> {
     Venue object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.slug != null) {
-      yield r'slug';
-      yield serializers.serialize(
-        object.slug,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.about != null) {
-      yield r'about';
-      yield serializers.serialize(
-        object.about,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.lat != null) {
-      yield r'lat';
-      yield serializers.serialize(
-        object.lat,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.lng != null) {
-      yield r'lng';
-      yield serializers.serialize(
-        object.lng,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'slug';
+    yield serializers.serialize(
+      object.slug,
+      specifiedType: const FullType(String),
+    );
+    yield r'about';
+    yield serializers.serialize(
+      object.about,
+      specifiedType: const FullType(String),
+    );
+    yield r'lat';
+    yield serializers.serialize(
+      object.lat,
+      specifiedType: const FullType(String),
+    );
+    yield r'lng';
+    yield serializers.serialize(
+      object.lng,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(int),
+    );
     if (object.phone != null) {
       yield r'phone';
       yield serializers.serialize(
         object.phone,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.webUrl != null) {
       yield r'web_url';
       yield serializers.serialize(
         object.webUrl,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.facebookUrl != null) {
       yield r'facebook_url';
       yield serializers.serialize(
         object.facebookUrl,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
     if (object.twitterUrl != null) {
       yield r'twitter_url';
       yield serializers.serialize(
         object.twitterUrl,
-        specifiedType: const FullType(String),
+        specifiedType: const FullType.nullable(String),
       );
     }
-    if (object.city != null) {
-      yield r'city';
-      yield serializers.serialize(
-        object.city,
-        specifiedType: const FullType(City),
-      );
-    }
-    if (object.district != null) {
-      yield r'district';
-      yield serializers.serialize(
-        object.district,
-        specifiedType: const FullType(District),
-      );
-    }
+    yield r'city';
+    yield serializers.serialize(
+      object.city,
+      specifiedType: const FullType(City),
+    );
+    yield r'district';
+    yield serializers.serialize(
+      object.district,
+      specifiedType: const FullType(District),
+    );
     if (object.neighborhood != null) {
       yield r'neighborhood';
       yield serializers.serialize(
         object.neighborhood,
-        specifiedType: const FullType(Neighborhood),
+        specifiedType: const FullType.nullable(Neighborhood),
       );
     }
-    if (object.address != null) {
-      yield r'address';
-      yield serializers.serialize(
-        object.address,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'address';
+    yield serializers.serialize(
+      object.address,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override
@@ -293,29 +274,33 @@ class _$VenueSerializer implements PrimitiveSerializer<Venue> {
         case r'phone':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.phone = valueDes;
           break;
         case r'web_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.webUrl = valueDes;
           break;
         case r'facebook_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.facebookUrl = valueDes;
           break;
         case r'twitter_url':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(String),
-          ) as String;
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
           result.twitterUrl = valueDes;
           break;
         case r'city':
@@ -335,8 +320,9 @@ class _$VenueSerializer implements PrimitiveSerializer<Venue> {
         case r'neighborhood':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Neighborhood),
-          ) as Neighborhood;
+            specifiedType: const FullType.nullable(Neighborhood),
+          ) as Neighborhood?;
+          if (valueDes == null) continue;
           result.neighborhood.replace(valueDes);
           break;
         case r'address':

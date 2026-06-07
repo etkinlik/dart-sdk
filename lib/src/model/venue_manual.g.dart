@@ -8,25 +8,25 @@ part of 'venue_manual.dart';
 
 class _$VenueManual extends VenueManual {
   @override
-  final String? name;
+  final String name;
   @override
-  final String? neighborhoodName;
+  final String neighborhoodName;
   @override
-  final String? districtName;
+  final String districtName;
   @override
-  final String? cityName;
+  final String cityName;
   @override
-  final String? address;
+  final String address;
 
   factory _$VenueManual([void Function(VenueManualBuilder)? updates]) =>
       (VenueManualBuilder()..update(updates))._build();
 
   _$VenueManual._(
-      {this.name,
-      this.neighborhoodName,
-      this.districtName,
-      this.cityName,
-      this.address})
+      {required this.name,
+      required this.neighborhoodName,
+      required this.districtName,
+      required this.cityName,
+      required this.address})
       : super._();
   @override
   VenueManual rebuild(void Function(VenueManualBuilder) updates) =>
@@ -127,11 +127,16 @@ class VenueManualBuilder implements Builder<VenueManual, VenueManualBuilder> {
   _$VenueManual _build() {
     final _$result = _$v ??
         _$VenueManual._(
-          name: name,
-          neighborhoodName: neighborhoodName,
-          districtName: districtName,
-          cityName: cityName,
-          address: address,
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'VenueManual', 'name'),
+          neighborhoodName: BuiltValueNullFieldError.checkNotNull(
+              neighborhoodName, r'VenueManual', 'neighborhoodName'),
+          districtName: BuiltValueNullFieldError.checkNotNull(
+              districtName, r'VenueManual', 'districtName'),
+          cityName: BuiltValueNullFieldError.checkNotNull(
+              cityName, r'VenueManual', 'cityName'),
+          address: BuiltValueNullFieldError.checkNotNull(
+              address, r'VenueManual', 'address'),
         );
     replace(_$result);
     return _$result;

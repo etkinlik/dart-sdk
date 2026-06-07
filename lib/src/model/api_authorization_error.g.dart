@@ -8,15 +8,16 @@ part of 'api_authorization_error.dart';
 
 class _$ApiAuthorizationError extends ApiAuthorizationError {
   @override
-  final bool? success;
+  final bool success;
   @override
-  final String? message;
+  final String message;
 
   factory _$ApiAuthorizationError(
           [void Function(ApiAuthorizationErrorBuilder)? updates]) =>
       (ApiAuthorizationErrorBuilder()..update(updates))._build();
 
-  _$ApiAuthorizationError._({this.success, this.message}) : super._();
+  _$ApiAuthorizationError._({required this.success, required this.message})
+      : super._();
   @override
   ApiAuthorizationError rebuild(
           void Function(ApiAuthorizationErrorBuilder) updates) =>
@@ -94,8 +95,10 @@ class ApiAuthorizationErrorBuilder
   _$ApiAuthorizationError _build() {
     final _$result = _$v ??
         _$ApiAuthorizationError._(
-          success: success,
-          message: message,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'ApiAuthorizationError', 'success'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ApiAuthorizationError', 'message'),
         );
     replace(_$result);
     return _$result;

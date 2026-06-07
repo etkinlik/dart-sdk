@@ -8,16 +8,17 @@ part of 'city.dart';
 
 class _$City extends City {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$City([void Function(CityBuilder)? updates]) =>
       (CityBuilder()..update(updates))._build();
 
-  _$City._({this.id, this.name, this.slug}) : super._();
+  _$City._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   City rebuild(void Function(CityBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -100,9 +101,9 @@ class CityBuilder implements Builder<City, CityBuilder> {
   _$City _build() {
     final _$result = _$v ??
         _$City._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'City', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name, r'City', 'name'),
+          slug: BuiltValueNullFieldError.checkNotNull(slug, r'City', 'slug'),
         );
     replace(_$result);
     return _$result;

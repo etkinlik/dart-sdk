@@ -8,16 +8,17 @@ part of 'format.dart';
 
 class _$Format extends Format {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$Format([void Function(FormatBuilder)? updates]) =>
       (FormatBuilder()..update(updates))._build();
 
-  _$Format._({this.id, this.name, this.slug}) : super._();
+  _$Format._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   Format rebuild(void Function(FormatBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -100,9 +101,9 @@ class FormatBuilder implements Builder<Format, FormatBuilder> {
   _$Format _build() {
     final _$result = _$v ??
         _$Format._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'Format', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(name, r'Format', 'name'),
+          slug: BuiltValueNullFieldError.checkNotNull(slug, r'Format', 'slug'),
         );
     replace(_$result);
     return _$result;

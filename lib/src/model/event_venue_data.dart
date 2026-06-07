@@ -21,13 +21,13 @@ part 'event_venue_data.g.dart';
 /// * [lat] - Latitude component of the location.
 /// * [lng] - Longitude component of the location.
 /// * [status] - 0: pending approval 1: approved
-/// * [phone] - Venue phone number.
-/// * [webUrl] - Venue website URL.
-/// * [facebookUrl] - Venue Facebook URL.
-/// * [twitterUrl] - Venue Twitter URL.
+/// * [phone] - Venue phone number; null when not set.
+/// * [webUrl] - Venue website URL; null when not set.
+/// * [facebookUrl] - Venue Facebook URL; null when not set.
+/// * [twitterUrl] - Venue Twitter URL; null when not set.
 /// * [city]
 /// * [district]
-/// * [neighborhood]
+/// * [neighborhood] - Neighborhood; null when not linked to a registered neighborhood.
 /// * [address] - Venue street address.
 /// * [neighborhoodName] - Neighborhood name (text).
 /// * [districtName] - District name (text).

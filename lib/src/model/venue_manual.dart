@@ -20,23 +20,23 @@ part 'venue_manual.g.dart';
 abstract class VenueManual implements Built<VenueManual, VenueManualBuilder> {
   /// Venue name.
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   /// Neighborhood name (text).
   @BuiltValueField(wireName: r'neighborhood_name')
-  String? get neighborhoodName;
+  String get neighborhoodName;
 
   /// District name (text).
   @BuiltValueField(wireName: r'district_name')
-  String? get districtName;
+  String get districtName;
 
   /// City name (text).
   @BuiltValueField(wireName: r'city_name')
-  String? get cityName;
+  String get cityName;
 
   /// Venue street address.
   @BuiltValueField(wireName: r'address')
-  String? get address;
+  String get address;
 
   VenueManual._();
 
@@ -62,41 +62,31 @@ class _$VenueManualSerializer implements PrimitiveSerializer<VenueManual> {
     VenueManual object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.neighborhoodName != null) {
-      yield r'neighborhood_name';
-      yield serializers.serialize(
-        object.neighborhoodName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.districtName != null) {
-      yield r'district_name';
-      yield serializers.serialize(
-        object.districtName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.cityName != null) {
-      yield r'city_name';
-      yield serializers.serialize(
-        object.cityName,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.address != null) {
-      yield r'address';
-      yield serializers.serialize(
-        object.address,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'neighborhood_name';
+    yield serializers.serialize(
+      object.neighborhoodName,
+      specifiedType: const FullType(String),
+    );
+    yield r'district_name';
+    yield serializers.serialize(
+      object.districtName,
+      specifiedType: const FullType(String),
+    );
+    yield r'city_name';
+    yield serializers.serialize(
+      object.cityName,
+      specifiedType: const FullType(String),
+    );
+    yield r'address';
+    yield serializers.serialize(
+      object.address,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

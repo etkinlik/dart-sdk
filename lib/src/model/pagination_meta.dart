@@ -17,7 +17,7 @@ abstract class PaginationMeta
     implements Built<PaginationMeta, PaginationMetaBuilder> {
   /// Total number of matching records.
   @BuiltValueField(wireName: r'total_count')
-  int? get totalCount;
+  int get totalCount;
 
   PaginationMeta._();
 
@@ -45,13 +45,11 @@ class _$PaginationMetaSerializer
     PaginationMeta object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.totalCount != null) {
-      yield r'total_count';
-      yield serializers.serialize(
-        object.totalCount,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'total_count';
+    yield serializers.serialize(
+      object.totalCount,
+      specifiedType: const FullType(int),
+    );
   }
 
   @override

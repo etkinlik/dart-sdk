@@ -8,14 +8,15 @@ part of 'api_deleted_error.dart';
 
 class _$ApiDeletedError extends ApiDeletedError {
   @override
-  final bool? success;
+  final bool success;
   @override
-  final String? message;
+  final String message;
 
   factory _$ApiDeletedError([void Function(ApiDeletedErrorBuilder)? updates]) =>
       (ApiDeletedErrorBuilder()..update(updates))._build();
 
-  _$ApiDeletedError._({this.success, this.message}) : super._();
+  _$ApiDeletedError._({required this.success, required this.message})
+      : super._();
   @override
   ApiDeletedError rebuild(void Function(ApiDeletedErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -91,8 +92,10 @@ class ApiDeletedErrorBuilder
   _$ApiDeletedError _build() {
     final _$result = _$v ??
         _$ApiDeletedError._(
-          success: success,
-          message: message,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'ApiDeletedError', 'success'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ApiDeletedError', 'message'),
         );
     replace(_$result);
     return _$result;

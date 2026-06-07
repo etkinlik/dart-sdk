@@ -49,25 +49,25 @@ void main() {
       // TODO
     });
 
-    // Venue phone number.
+    // Venue phone number; null when not set.
     // String phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // Venue website URL.
+    // Venue website URL; null when not set.
     // String webUrl
     test('to test the property `webUrl`', () async {
       // TODO
     });
 
-    // Venue Facebook URL.
+    // Venue Facebook URL; null when not set.
     // String facebookUrl
     test('to test the property `facebookUrl`', () async {
       // TODO
     });
 
-    // Venue Twitter URL.
+    // Venue Twitter URL; null when not set.
     // String twitterUrl
     test('to test the property `twitterUrl`', () async {
       // TODO
@@ -83,6 +83,7 @@ void main() {
       // TODO
     });
 
+    // Neighborhood; null when not linked to a registered neighborhood.
     // Neighborhood neighborhood
     test('to test the property `neighborhood`', () async {
       // TODO

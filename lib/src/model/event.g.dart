@@ -68,31 +68,31 @@ class _$EventVenueTypeEnumSerializer
 
 class _$Event extends Event {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
   @override
-  final String? url;
+  final String url;
   @override
-  final String? content;
+  final String content;
   @override
-  final DateTime? start;
+  final DateTime start;
   @override
-  final DateTime? startR001;
+  final DateTime startR001;
   @override
-  final DateTime? end;
+  final DateTime end;
   @override
   final DateTime? endR001;
   @override
-  final String? timezone;
+  final String timezone;
   @override
-  final bool? isFree;
+  final bool isFree;
   @override
-  final String? posterUrl;
+  final String posterUrl;
   @override
-  final String? ticketUrl;
+  final String ticketUrl;
   @override
   final String? phone;
   @override
@@ -112,35 +112,35 @@ class _$Event extends Event {
   @override
   final String? iosUrl;
   @override
-  final Format? format;
+  final Format format;
   @override
-  final Category? category;
+  final Category category;
   @override
   final Venue? venue;
   @override
-  final EventVenueTypeEnum? venueType;
+  final EventVenueTypeEnum venueType;
   @override
   final EventVenueData? venueData;
   @override
-  final BuiltList<Tag>? tags;
+  final BuiltList<Tag> tags;
 
   factory _$Event([void Function(EventBuilder)? updates]) =>
       (EventBuilder()..update(updates))._build();
 
   _$Event._(
-      {this.id,
-      this.name,
-      this.slug,
-      this.url,
-      this.content,
-      this.start,
-      this.startR001,
-      this.end,
+      {required this.id,
+      required this.name,
+      required this.slug,
+      required this.url,
+      required this.content,
+      required this.start,
+      required this.startR001,
+      required this.end,
       this.endR001,
-      this.timezone,
-      this.isFree,
-      this.posterUrl,
-      this.ticketUrl,
+      required this.timezone,
+      required this.isFree,
+      required this.posterUrl,
+      required this.ticketUrl,
       this.phone,
       this.email,
       this.facebookUrl,
@@ -150,12 +150,12 @@ class _$Event extends Event {
       this.liveUrl,
       this.androidUrl,
       this.iosUrl,
-      this.format,
-      this.category,
+      required this.format,
+      required this.category,
       this.venue,
-      this.venueType,
+      required this.venueType,
       this.venueData,
-      this.tags})
+      required this.tags})
       : super._();
   @override
   Event rebuild(void Function(EventBuilder) updates) =>
@@ -414,12 +414,12 @@ class EventBuilder implements Builder<Event, EventBuilder> {
       _liveUrl = $v.liveUrl;
       _androidUrl = $v.androidUrl;
       _iosUrl = $v.iosUrl;
-      _format = $v.format?.toBuilder();
-      _category = $v.category?.toBuilder();
+      _format = $v.format.toBuilder();
+      _category = $v.category.toBuilder();
       _venue = $v.venue?.toBuilder();
       _venueType = $v.venueType;
       _venueData = $v.venueData?.toBuilder();
-      _tags = $v.tags?.toBuilder();
+      _tags = $v.tags.toBuilder();
       _$v = null;
     }
     return this;
@@ -443,19 +443,26 @@ class EventBuilder implements Builder<Event, EventBuilder> {
     try {
       _$result = _$v ??
           _$Event._(
-            id: id,
-            name: name,
-            slug: slug,
-            url: url,
-            content: content,
-            start: start,
-            startR001: startR001,
-            end: end,
+            id: BuiltValueNullFieldError.checkNotNull(id, r'Event', 'id'),
+            name: BuiltValueNullFieldError.checkNotNull(name, r'Event', 'name'),
+            slug: BuiltValueNullFieldError.checkNotNull(slug, r'Event', 'slug'),
+            url: BuiltValueNullFieldError.checkNotNull(url, r'Event', 'url'),
+            content: BuiltValueNullFieldError.checkNotNull(
+                content, r'Event', 'content'),
+            start:
+                BuiltValueNullFieldError.checkNotNull(start, r'Event', 'start'),
+            startR001: BuiltValueNullFieldError.checkNotNull(
+                startR001, r'Event', 'startR001'),
+            end: BuiltValueNullFieldError.checkNotNull(end, r'Event', 'end'),
             endR001: endR001,
-            timezone: timezone,
-            isFree: isFree,
-            posterUrl: posterUrl,
-            ticketUrl: ticketUrl,
+            timezone: BuiltValueNullFieldError.checkNotNull(
+                timezone, r'Event', 'timezone'),
+            isFree: BuiltValueNullFieldError.checkNotNull(
+                isFree, r'Event', 'isFree'),
+            posterUrl: BuiltValueNullFieldError.checkNotNull(
+                posterUrl, r'Event', 'posterUrl'),
+            ticketUrl: BuiltValueNullFieldError.checkNotNull(
+                ticketUrl, r'Event', 'ticketUrl'),
             phone: phone,
             email: email,
             facebookUrl: facebookUrl,
@@ -465,27 +472,28 @@ class EventBuilder implements Builder<Event, EventBuilder> {
             liveUrl: liveUrl,
             androidUrl: androidUrl,
             iosUrl: iosUrl,
-            format: _format?.build(),
-            category: _category?.build(),
+            format: format.build(),
+            category: category.build(),
             venue: _venue?.build(),
-            venueType: venueType,
+            venueType: BuiltValueNullFieldError.checkNotNull(
+                venueType, r'Event', 'venueType'),
             venueData: _venueData?.build(),
-            tags: _tags?.build(),
+            tags: tags.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'format';
-        _format?.build();
+        format.build();
         _$failedField = 'category';
-        _category?.build();
+        category.build();
         _$failedField = 'venue';
         _venue?.build();
 
         _$failedField = 'venueData';
         _venueData?.build();
         _$failedField = 'tags';
-        _tags?.build();
+        tags.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(r'Event', _$failedField, e.toString());
       }

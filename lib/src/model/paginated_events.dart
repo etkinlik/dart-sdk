@@ -20,10 +20,10 @@ part 'paginated_events.g.dart';
 abstract class PaginatedEvents
     implements Built<PaginatedEvents, PaginatedEventsBuilder> {
   @BuiltValueField(wireName: r'meta')
-  PaginationMeta? get meta;
+  PaginationMeta get meta;
 
   @BuiltValueField(wireName: r'items')
-  BuiltList<Event>? get items;
+  BuiltList<Event> get items;
 
   PaginatedEvents._();
 
@@ -51,20 +51,16 @@ class _$PaginatedEventsSerializer
     PaginatedEvents object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.meta != null) {
-      yield r'meta';
-      yield serializers.serialize(
-        object.meta,
-        specifiedType: const FullType(PaginationMeta),
-      );
-    }
-    if (object.items != null) {
-      yield r'items';
-      yield serializers.serialize(
-        object.items,
-        specifiedType: const FullType(BuiltList, [FullType(Event)]),
-      );
-    }
+    yield r'meta';
+    yield serializers.serialize(
+      object.meta,
+      specifiedType: const FullType(PaginationMeta),
+    );
+    yield r'items';
+    yield serializers.serialize(
+      object.items,
+      specifiedType: const FullType(BuiltList, [FullType(Event)]),
+    );
   }
 
   @override

@@ -8,13 +8,13 @@ part of 'event_impression_created.dart';
 
 class _$EventImpressionCreated extends EventImpressionCreated {
   @override
-  final bool? success;
+  final bool success;
 
   factory _$EventImpressionCreated(
           [void Function(EventImpressionCreatedBuilder)? updates]) =>
       (EventImpressionCreatedBuilder()..update(updates))._build();
 
-  _$EventImpressionCreated._({this.success}) : super._();
+  _$EventImpressionCreated._({required this.success}) : super._();
   @override
   EventImpressionCreated rebuild(
           void Function(EventImpressionCreatedBuilder) updates) =>
@@ -83,7 +83,8 @@ class EventImpressionCreatedBuilder
   _$EventImpressionCreated _build() {
     final _$result = _$v ??
         _$EventImpressionCreated._(
-          success: success,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'EventImpressionCreated', 'success'),
         );
     replace(_$result);
     return _$result;

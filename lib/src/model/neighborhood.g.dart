@@ -8,16 +8,17 @@ part of 'neighborhood.dart';
 
 class _$Neighborhood extends Neighborhood {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$Neighborhood([void Function(NeighborhoodBuilder)? updates]) =>
       (NeighborhoodBuilder()..update(updates))._build();
 
-  _$Neighborhood._({this.id, this.name, this.slug}) : super._();
+  _$Neighborhood._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   Neighborhood rebuild(void Function(NeighborhoodBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -101,9 +102,11 @@ class NeighborhoodBuilder
   _$Neighborhood _build() {
     final _$result = _$v ??
         _$Neighborhood._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'Neighborhood', 'id'),
+          name: BuiltValueNullFieldError.checkNotNull(
+              name, r'Neighborhood', 'name'),
+          slug: BuiltValueNullFieldError.checkNotNull(
+              slug, r'Neighborhood', 'slug'),
         );
     replace(_$result);
     return _$result;

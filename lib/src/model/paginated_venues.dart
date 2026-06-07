@@ -20,10 +20,10 @@ part 'paginated_venues.g.dart';
 abstract class PaginatedVenues
     implements Built<PaginatedVenues, PaginatedVenuesBuilder> {
   @BuiltValueField(wireName: r'meta')
-  PaginationMeta? get meta;
+  PaginationMeta get meta;
 
   @BuiltValueField(wireName: r'items')
-  BuiltList<Venue>? get items;
+  BuiltList<Venue> get items;
 
   PaginatedVenues._();
 
@@ -51,20 +51,16 @@ class _$PaginatedVenuesSerializer
     PaginatedVenues object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.meta != null) {
-      yield r'meta';
-      yield serializers.serialize(
-        object.meta,
-        specifiedType: const FullType(PaginationMeta),
-      );
-    }
-    if (object.items != null) {
-      yield r'items';
-      yield serializers.serialize(
-        object.items,
-        specifiedType: const FullType(BuiltList, [FullType(Venue)]),
-      );
-    }
+    yield r'meta';
+    yield serializers.serialize(
+      object.meta,
+      specifiedType: const FullType(PaginationMeta),
+    );
+    yield r'items';
+    yield serializers.serialize(
+      object.items,
+      specifiedType: const FullType(BuiltList, [FullType(Venue)]),
+    );
   }
 
   @override

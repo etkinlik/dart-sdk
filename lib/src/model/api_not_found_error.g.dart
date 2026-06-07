@@ -8,15 +8,16 @@ part of 'api_not_found_error.dart';
 
 class _$ApiNotFoundError extends ApiNotFoundError {
   @override
-  final bool? success;
+  final bool success;
   @override
-  final String? message;
+  final String message;
 
   factory _$ApiNotFoundError(
           [void Function(ApiNotFoundErrorBuilder)? updates]) =>
       (ApiNotFoundErrorBuilder()..update(updates))._build();
 
-  _$ApiNotFoundError._({this.success, this.message}) : super._();
+  _$ApiNotFoundError._({required this.success, required this.message})
+      : super._();
   @override
   ApiNotFoundError rebuild(void Function(ApiNotFoundErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -93,8 +94,10 @@ class ApiNotFoundErrorBuilder
   _$ApiNotFoundError _build() {
     final _$result = _$v ??
         _$ApiNotFoundError._(
-          success: success,
-          message: message,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'ApiNotFoundError', 'success'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ApiNotFoundError', 'message'),
         );
     replace(_$result);
     return _$result;

@@ -17,7 +17,7 @@ abstract class EventImpressionCreated
     implements Built<EventImpressionCreated, EventImpressionCreatedBuilder> {
   /// true when the operation succeeded.
   @BuiltValueField(wireName: r'success')
-  bool? get success;
+  bool get success;
 
   EventImpressionCreated._();
 
@@ -49,13 +49,11 @@ class _$EventImpressionCreatedSerializer
     EventImpressionCreated object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.success != null) {
-      yield r'success';
-      yield serializers.serialize(
-        object.success,
-        specifiedType: const FullType(bool),
-      );
-    }
+    yield r'success';
+    yield serializers.serialize(
+      object.success,
+      specifiedType: const FullType(bool),
+    );
   }
 
   @override

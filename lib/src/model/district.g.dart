@@ -8,16 +8,17 @@ part of 'district.dart';
 
 class _$District extends District {
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? slug;
+  final String slug;
 
   factory _$District([void Function(DistrictBuilder)? updates]) =>
       (DistrictBuilder()..update(updates))._build();
 
-  _$District._({this.id, this.name, this.slug}) : super._();
+  _$District._({required this.id, required this.name, required this.slug})
+      : super._();
   @override
   District rebuild(void Function(DistrictBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -100,9 +101,11 @@ class DistrictBuilder implements Builder<District, DistrictBuilder> {
   _$District _build() {
     final _$result = _$v ??
         _$District._(
-          id: id,
-          name: name,
-          slug: slug,
+          id: BuiltValueNullFieldError.checkNotNull(id, r'District', 'id'),
+          name:
+              BuiltValueNullFieldError.checkNotNull(name, r'District', 'name'),
+          slug:
+              BuiltValueNullFieldError.checkNotNull(slug, r'District', 'slug'),
         );
     replace(_$result);
     return _$result;

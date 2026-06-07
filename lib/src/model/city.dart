@@ -18,15 +18,15 @@ part 'city.g.dart';
 abstract class City implements Built<City, CityBuilder> {
   /// City ID.
   @BuiltValueField(wireName: r'id')
-  int? get id;
+  int get id;
 
   /// City name.
   @BuiltValueField(wireName: r'name')
-  String? get name;
+  String get name;
 
   /// City slug.
   @BuiltValueField(wireName: r'slug')
-  String? get slug;
+  String get slug;
 
   City._();
 
@@ -51,27 +51,21 @@ class _$CitySerializer implements PrimitiveSerializer<City> {
     City object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.slug != null) {
-      yield r'slug';
-      yield serializers.serialize(
-        object.slug,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(int),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'slug';
+    yield serializers.serialize(
+      object.slug,
+      specifiedType: const FullType(String),
+    );
   }
 
   @override

@@ -8,14 +8,15 @@ part of 'api_general_error.dart';
 
 class _$ApiGeneralError extends ApiGeneralError {
   @override
-  final bool? success;
+  final bool success;
   @override
-  final String? message;
+  final String message;
 
   factory _$ApiGeneralError([void Function(ApiGeneralErrorBuilder)? updates]) =>
       (ApiGeneralErrorBuilder()..update(updates))._build();
 
-  _$ApiGeneralError._({this.success, this.message}) : super._();
+  _$ApiGeneralError._({required this.success, required this.message})
+      : super._();
   @override
   ApiGeneralError rebuild(void Function(ApiGeneralErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -91,8 +92,10 @@ class ApiGeneralErrorBuilder
   _$ApiGeneralError _build() {
     final _$result = _$v ??
         _$ApiGeneralError._(
-          success: success,
-          message: message,
+          success: BuiltValueNullFieldError.checkNotNull(
+              success, r'ApiGeneralError', 'success'),
+          message: BuiltValueNullFieldError.checkNotNull(
+              message, r'ApiGeneralError', 'message'),
         );
     replace(_$result);
     return _$result;

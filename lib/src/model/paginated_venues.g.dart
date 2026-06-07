@@ -8,14 +8,14 @@ part of 'paginated_venues.dart';
 
 class _$PaginatedVenues extends PaginatedVenues {
   @override
-  final PaginationMeta? meta;
+  final PaginationMeta meta;
   @override
-  final BuiltList<Venue>? items;
+  final BuiltList<Venue> items;
 
   factory _$PaginatedVenues([void Function(PaginatedVenuesBuilder)? updates]) =>
       (PaginatedVenuesBuilder()..update(updates))._build();
 
-  _$PaginatedVenues._({this.meta, this.items}) : super._();
+  _$PaginatedVenues._({required this.meta, required this.items}) : super._();
   @override
   PaginatedVenues rebuild(void Function(PaginatedVenuesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
@@ -68,8 +68,8 @@ class PaginatedVenuesBuilder
   PaginatedVenuesBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _meta = $v.meta?.toBuilder();
-      _items = $v.items?.toBuilder();
+      _meta = $v.meta.toBuilder();
+      _items = $v.items.toBuilder();
       _$v = null;
     }
     return this;
@@ -93,16 +93,16 @@ class PaginatedVenuesBuilder
     try {
       _$result = _$v ??
           _$PaginatedVenues._(
-            meta: _meta?.build(),
-            items: _items?.build(),
+            meta: meta.build(),
+            items: items.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'meta';
-        _meta?.build();
+        meta.build();
         _$failedField = 'items';
-        _items?.build();
+        items.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'PaginatedVenues', _$failedField, e.toString());

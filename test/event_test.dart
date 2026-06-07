@@ -85,55 +85,55 @@ void main() {
       // TODO
     });
 
-    // Contact phone for the event.
+    // Contact phone for the event; null when not set.
     // String phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // Contact email for the event.
+    // Contact email for the event; null when not set.
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // Facebook profile or page for the event.
+    // Facebook profile or page for the event; null when not set.
     // String facebookUrl
     test('to test the property `facebookUrl`', () async {
       // TODO
     });
 
-    // Twitter handle or URL for the event.
+    // Twitter handle or URL for the event; null when not set.
     // String twitterUrl
     test('to test the property `twitterUrl`', () async {
       // TODO
     });
 
-    // Hashtag for the event.
+    // Hashtag for the event; null when not set.
     // String hashtag
     test('to test the property `hashtag`', () async {
       // TODO
     });
 
-    // Website URL for the event.
+    // Website URL for the event; null when not set.
     // String webUrl
     test('to test the property `webUrl`', () async {
       // TODO
     });
 
-    // Live stream URL for the event.
+    // Live stream URL for the event; null when not set.
     // String liveUrl
     test('to test the property `liveUrl`', () async {
       // TODO
     });
 
-    // Android app URL for the event.
+    // Android app URL for the event; null when not set.
     // String androidUrl
     test('to test the property `androidUrl`', () async {
       // TODO
     });
 
-    // iOS app URL for the event.
+    // iOS app URL for the event; null when not set.
     // String iosUrl
     test('to test the property `iosUrl`', () async {
       // TODO
