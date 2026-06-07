@@ -1,5 +1,5 @@
 name: etkinlik_io_api
-version: 2.0.7
+version: 2.0.8
 license: MIT
 description: Official Dart and Flutter client for the Etkinlik.io V2 REST API. Access events
 homepage: https://etkinlik.io/api-bilgi

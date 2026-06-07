@@ -1,3 +1,10 @@
+## 2.0.8
+
+- Regenerated from OpenAPI 2.0.8; published via GitHub Actions OIDC under publisher `etkinlik.io`.
+- API surface unchanged from 2.0.7.
+- Dart SDK: added `example/example.md` for pub.dev; CI post-process removes unused imports in generated `lib/`.
+- New release tag; v2.0.7 could not be replaced on pub.dev after tag move.
+
 ## 2.0.7
 
 - Regenerated from OpenAPI 2.0.7; published via GitHub Actions OIDC under publisher `etkinlik.io`.
