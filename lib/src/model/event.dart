@@ -26,6 +26,7 @@ part 'event.g.dart';
 /// * [startR001] - Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations.
 /// * [end] - **Deprecated.** Legacy event end in ISO8601 with offset for the event's `timezone`. Still returned for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. New integrations must use `end_r001` with `timezone`.
 /// * [endR001] - Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.
+/// * [modifiedAt] - Last content or source-data update instant in UTC (ISO8601). Use with `sort_by=updated` to list recently changed events.
 /// * [timezone] - IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.
 /// * [isFree] - `true` if the event is free, otherwise `false`.
 /// * [posterUrl] - Event poster image URL.
@@ -84,6 +85,10 @@ abstract class Event implements Built<Event, EventBuilder> {
   /// Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.
   @BuiltValueField(wireName: r'end_r001')
   DateTime? get endR001;
+
+  /// Last content or source-data update instant in UTC (ISO8601). Use with `sort_by=updated` to list recently changed events.
+  @BuiltValueField(wireName: r'modified_at')
+  DateTime get modifiedAt;
 
   /// IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.
   @BuiltValueField(wireName: r'timezone')
@@ -230,6 +235,11 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
         specifiedType: const FullType.nullable(DateTime),
       );
     }
+    yield r'modified_at';
+    yield serializers.serialize(
+      object.modifiedAt,
+      specifiedType: const FullType(DateTime),
+    );
     yield r'timezone';
     yield serializers.serialize(
       object.timezone,
@@ -435,6 +445,13 @@ class _$EventSerializer implements PrimitiveSerializer<Event> {
           ) as DateTime?;
           if (valueDes == null) continue;
           result.endR001 = valueDes;
+          break;
+        case r'modified_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.modifiedAt = valueDes;
           break;
         case r'timezone':
           final valueDes = serializers.deserialize(

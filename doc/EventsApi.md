@@ -79,7 +79,7 @@ final String venueIds = venueIds_example; // String | Filter events by venue IDs
 final String cityIds = cityIds_example; // String | Filter records by city IDs. Use comma-separated values for multiple IDs.
 final String startGte = startGte_example; // String | Filter events by start time (greater than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
 final String endLte = endLte_example; // String | Filter events by end time (less than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
-final String sortBy = sortBy_example; // String | Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently added approved events. 
+final String sortBy = sortBy_example; // String | Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently approved (catalog additions). `updated`: most recently updated content or source data (`modified_at` desc). 
 final int skip = 56; // int | Offset for pagination.
 final int take = 56; // int | Maximum number of results to return.
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
  **cityIds** | **String**| Filter records by city IDs. Use comma-separated values for multiple IDs. | [optional] 
  **startGte** | **String**| Filter events by start time (greater than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss. | [optional] 
  **endLte** | **String**| Filter events by end time (less than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss. | [optional] 
- **sortBy** | **String**| Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently added approved events.  | [optional] [default to 'upcoming']
+ **sortBy** | **String**| Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently approved (catalog additions). `updated`: most recently updated content or source data (`modified_at` desc).  | [optional] [default to 'upcoming']
  **skip** | **int**| Offset for pagination. | [optional] [default to 0]
  **take** | **int**| Maximum number of results to return. | [optional] [default to 50]
 

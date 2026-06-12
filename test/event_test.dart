@@ -61,6 +61,12 @@ void main() {
       // TODO
     });
 
+    // Last content or source-data update instant in UTC (ISO8601). Use with `sort_by=updated` to list recently changed events. 
+    // DateTime modifiedAt
+    test('to test the property `modifiedAt`', () async {
+      // TODO
+    });
+
     // IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time. 
     // String timezone
     test('to test the property `timezone`', () async {

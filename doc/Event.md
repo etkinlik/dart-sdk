@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **startR001** | [**DateTime**](DateTime.md) | Event start instant in UTC (ISO8601). Prefer with `end_r001` and `timezone` for new integrations.  | 
 **end** | [**DateTime**](DateTime.md) | **Deprecated.** Legacy event end in ISO8601 with offset for the event's `timezone`. Still returned for backward compatibility. When the event has no scheduled end (`end_r001` is null), this value is local `start` plus 2 hours. New integrations must use `end_r001` with `timezone`.  | 
 **endR001** | [**DateTime**](DateTime.md) | Actual scheduled end instant in UTC (ISO8601) when available; null when the event has no end time. Prefer with `start_r001` for new integrations.  | [optional] 
+**modifiedAt** | [**DateTime**](DateTime.md) | Last content or source-data update instant in UTC (ISO8601). Use with `sort_by=updated` to list recently changed events.  | 
 **timezone** | **String** | IANA timezone identifier for the event (e.g. `Europe/Istanbul`). Always present and valid. Use with `start_r001` / `end_r001` for display in local wall-clock time.  | 
 **isFree** | **bool** | `true` if the event is free, otherwise `false`.  | 
 **posterUrl** | **String** | Event poster image URL. | 

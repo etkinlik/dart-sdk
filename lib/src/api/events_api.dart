@@ -114,7 +114,7 @@ class EventsApi {
   /// * [cityIds] - Filter records by city IDs. Use comma-separated values for multiple IDs.
   /// * [startGte] - Filter events by start time (greater than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
   /// * [endLte] - Filter events by end time (less than or equal). Valid datetime, e.g. YYYY-MM-DD HH:mm:ss.
-  /// * [sortBy] - Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently added approved events.
+  /// * [sortBy] - Sort order (case-insensitive). `upcoming`: upcoming events by start time ascending (default). `recent`: most recently approved (catalog additions). `updated`: most recently updated content or source data (`modified_at` desc).
   /// * [skip] - Offset for pagination.
   /// * [take] - Maximum number of results to return.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation

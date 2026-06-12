@@ -1,3 +1,8 @@
+## 2.0.11
+
+- Regenerated from OpenAPI 2.0.11; published via GitHub Actions OIDC under publisher `etkinlik.io`.
+- Event model: `modified_at` field. `sort_by=updated` on list events.
+
 ## 2.0.10
 
 - Regenerated from OpenAPI 2.0.10; published via GitHub Actions OIDC under publisher `etkinlik.io`.
